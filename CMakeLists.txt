@@ -4,6 +4,25 @@ cmake_minimum_required(VERSION 3.14)
 # use vcpkg scripts
 #
 
+include(cmake/CheckTypeExists.cmake)
+include(CheckTypeSize)
+include(CheckIncludeFile)
+include(CheckSymbolExists)
+
+check_type_exists(size_t "" HAVE_SIZE_T)
+check_type_exists(uint32_t "" HAVE_UINT32_T)
+check_type_size("int32_t" SIZEOF_INT32_T)
+check_type_size("uint32_t" SIZEOF_UINT32_T)
+check_type_size("int" SIZEOF_INT)
+check_type_size("int32_t" SIZEOF_INT32)
+check_type_size("uint32_t" SIZEOF_UINT32_T)
+check_type_size("long" SIZEOF_LONG_T)
+check_type_size("char*" SIZEOF_CHARP)
+#CHECK_FUNCTION_EXISTS_GLIBC(acl_set_file HAVE_ACL_SET_FILE)
+#CHECK_SYMBOL_EXISTS(acl_get_link_np "${INCLUDES}" HAVE_ACL_GET_LINK_NP)
+check_include_file("stdint.h" HAVE_STDINT_H)
+check_symbol_exists("addrinfo" "" HAVE_STRUCT_ADDRINFO)
+
 configure_file(config.h.cmake.in config.h)
 
 add_library(rsync_lib OBJECT
@@ -30,11 +49,15 @@ add_library(rsync_lib OBJECT
   lib/inet_pton.c
 )
 
-target_include_directories(rsync_lib PRIVATE
+target_include_directories(rsync_lib BEFORE PRIVATE
   lib
   libw32
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
+)
+
+target_compile_definitions(rsync_lib PRIVATE
+  -D__INSIDE_CYGWIN_NET__
 )
 
 add_executable(rsync
@@ -102,11 +125,15 @@ add_custom_target(rsync_sources SOURCES
   config.h.cmake.in
 )
 
-target_include_directories(rsync PRIVATE
+target_include_directories(rsync BEFORE PRIVATE
   lib
   libw32
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
+)
+
+target_compile_definitions(rsync PRIVATE
+  -D__INSIDE_CYGWIN_NET__
 )
 
 set_target_properties(rsync PROPERTIES
