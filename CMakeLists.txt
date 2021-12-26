@@ -32,6 +32,7 @@ add_library(rsync_lib OBJECT
 
 target_include_directories(rsync_lib PRIVATE
   lib
+  libw32
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
 )
@@ -103,6 +104,7 @@ add_custom_target(rsync_sources SOURCES
 
 target_include_directories(rsync PRIVATE
   lib
+  libw32
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
 )
