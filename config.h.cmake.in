@@ -414,7 +414,8 @@
 #undef HAVE_SIMD
 
 /* Define to 1 if the system has the type `size_t'. */
-#undef HAVE_SIZE_T
+// #undef HAVE_SIZE_T
+#cmakedefine01 HAVE_SIZE_T
 
 /* Define to 1 if you have the `snprintf' function. */
 #undef HAVE_SNPRINTF
@@ -441,7 +442,9 @@
 #undef HAVE_SOLARIS_XATTRS
 
 /* Define to 1 if you have the <stdint.h> header file. */
-#undef HAVE_STDINT_H
+//#undef HAVE_STDINT_H
+#cmakedefine HAVE_STDINT_H @HAVE_STDINT_H@
+
 
 /* Define to 1 if you have the <stdlib.h> header file. */
 #undef HAVE_STDLIB_H
@@ -477,7 +480,9 @@
 #undef HAVE_STRTOL
 
 /* Define to 1 if the system has the type `struct addrinfo'. */
-#undef HAVE_STRUCT_ADDRINFO
+//#undef HAVE_STRUCT_ADDRINFO
+#cmakedefine HAVE_STRUCT_ADDRINFO @HAVE_STRUCT_ADDRINFO@
+
 
 /* Define to 1 if the system has the type `struct sockaddr_storage'. */
 #undef HAVE_STRUCT_SOCKADDR_STORAGE
@@ -716,7 +721,9 @@
 #undef SIGNED_CHAR_OK
 
 /* The size of `char*', as computed by sizeof. */
-#undef SIZEOF_CHARP
+//#undef SIZEOF_CHARP
+#cmakedefine SIZEOF_CHARP @SIZEOF_CHARP@
+
 
 /* The size of `int', as computed by sizeof. */
 #undef SIZEOF_INT
@@ -725,7 +732,7 @@
 #undef SIZEOF_INT16_T
 
 /* The size of `int32_t', as computed by sizeof. */
-#undef SIZEOF_INT32_T
+#undef SIZEOF_UINT32_T
 
 /* The size of `int64_t', as computed by sizeof. */
 #undef SIZEOF_INT64_T
@@ -752,7 +759,10 @@
 #undef SIZEOF_UINT16_T
 
 /* The size of `uint32_t', as computed by sizeof. */
-#undef SIZEOF_UINT32_T
+//#undef SIZEOF_UINT32_T
+#cmakedefine SIZEOF_UINT32_T @SIZEOF_UINT32_T@
+#cmakedefine SIZEOF_INT @SIZEOF_INT@
+//#cmakedefine uint32 @UINT32_T@
 
 /* If using the C implementation of alloca, define if you know the
    direction of stack growth for your system; otherwise it will be
