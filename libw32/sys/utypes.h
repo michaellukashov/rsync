@@ -35,10 +35,10 @@ __CPRAGMA_ONCE
 #if (_MSC_VER != 1500)                          /* MSVC 9/2008 */
 #if (_MSC_VER != 1600)                          /* MSVC 10/2010 */
 #if (_MSC_VER != 1900)                          /* MSVC 19/2015 */
-#if (_MSC_VER <  1910 || _MSC_VER > 1917)       /* MSVC 19.10 .. 14/2017 */
-#error utypes.h: untested MSVC Version (2005 -- 2017) only ...
- //see: https://en.wikipedia.org/wiki/Microsoft_Visual_C%2B%2B
-#endif	//2017
+//#if (_MSC_VER <  1910 || _MSC_VER > 1917)       /* MSVC 19.10 .. 14/2017 */
+//#error utypes.h: untested MSVC Version (2005 -- 2017) only ...
+// //see: https://en.wikipedia.org/wiki/Microsoft_Visual_C%2B%2B
+//#endif	//2017
 #endif	//2015
 #endif	//2010
 #endif	//2008
@@ -62,7 +62,7 @@ __CPRAGMA_ONCE
 
 #if !defined(_POSIX_SOURCE) && \
         !defined(_UNIXTYPES_T_DEFINED) && \
-        !defined(u_char)
+        !defined(u_char) && !defined(uchar)
 #define _UNIXTYPES_T_DEFINED
 #if defined(_BSD_SOURCE)
 #if !defined(_BSDTYPES_DEFINED)
