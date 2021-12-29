@@ -57,6 +57,9 @@ check_c_source_compiles(
 set(HAVE_UNISTD_H 1)
 set(HAVE_STRERROR 1)
 set(HAVE_GETTIMEOFDAY_TZ 1)
+set(HAVE_DIRENT_H 1)
+set(HAVE_LIBPOPT 1)
+#set(HAVE_FLOAT_H 1)
 
 configure_file(config.h.cmake.in config.h)
 
@@ -93,6 +96,25 @@ target_include_directories(rsync_lib BEFORE PRIVATE
 
 target_compile_definitions(rsync_lib PRIVATE
   -D__INSIDE_CYGWIN_NET__
+)
+
+add_library(popt_lib OBJECT
+  popt/system.h
+  popt/popt.h
+  popt/poptint.h
+  popt/findme.h
+  popt/popt.c
+  popt/popthelp.c
+  popt/poptparse.c
+  popt/poptconfig.c
+  popt/findme.c
+)
+
+target_include_directories(popt_lib BEFORE PRIVATE
+  lib
+  libw32
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_BINARY_DIR}
 )
 
 add_executable(rsync
@@ -165,6 +187,7 @@ target_include_directories(rsync BEFORE PRIVATE
   libw32
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
+  popt
 )
 
 target_compile_definitions(rsync PRIVATE
@@ -178,4 +201,5 @@ set_target_properties(rsync PROPERTIES
 
 target_link_libraries(rsync
   rsync_lib
+  popt_lib
 )
