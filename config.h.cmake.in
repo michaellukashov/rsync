@@ -486,6 +486,7 @@
 
 /* Define to 1 if the system has the type `struct sockaddr_storage'. */
 #undef HAVE_STRUCT_SOCKADDR_STORAGE
+#cmakedefine HAVE_STRUCT_SOCKADDR_STORAGE @HAVE_STRUCT_SOCKADDR_STORAGE@
 
 /* Define to 1 if the system has the type `struct stat64'. */
 #undef HAVE_STRUCT_STAT64
@@ -745,9 +746,11 @@
 
 /* The size of `off64_t', as computed by sizeof. */
 #undef SIZEOF_OFF64_T
+#cmakedefine SIZEOF_OFF64_T @SIZEOF_OFF64_T@
 
 /* The size of `off_t', as computed by sizeof. */
 #undef SIZEOF_OFF_T
+#cmakedefine SIZEOF_OFF_T @SIZEOF_OFF_T@
 
 /* The size of `short', as computed by sizeof. */
 #undef SIZEOF_SHORT
