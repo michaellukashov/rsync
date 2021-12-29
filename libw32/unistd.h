@@ -124,6 +124,8 @@ __CPRAGMA_ONCE
 #include <fcntl.h>
 #include <io.h>                                 /* write, read ... */
 
+typedef _stat64 stat64;
+
 #if defined(HAVE_CONFIG_H)                      /* stand alone? */
 #ifndef  NEED_GETOPT
 #define  NEED_GETOPT
