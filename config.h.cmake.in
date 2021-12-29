@@ -188,6 +188,7 @@
 
 /* Define to 1 if the system has the type `id_t'. */
 #undef HAVE_ID_T
+#cmakedefine HAVE_ID_T @HAVE_ID_T@
 
 /* Define to 1 if you have the `inet_ntop' function. */
 #undef HAVE_INET_NTOP
@@ -316,6 +317,7 @@
 
 /* Define to 1 if the system has the type `mode_t'. */
 #undef HAVE_MODE_T
+#cmakedefine HAVE_MODE_T @HAVE_MODE_T@
 
 /* Define to 1 if you have the `mtrace' function. */
 #undef HAVE_MTRACE
