@@ -6,6 +6,8 @@
    file accompanying popt source distributions, available from 
    ftp://ftp.rpm.org/pub/rpm/dist. */
 
+#include <config.h>
+#include <unistd.h>
 #include "system.h"
 #include "findme.h"
 
