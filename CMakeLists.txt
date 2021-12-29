@@ -24,8 +24,8 @@ check_type_size("long" SIZEOF_LONG_T)
 check_type_size("char*" SIZEOF_CHARP)
 check_type_size("_off64_t" SIZEOF_OFF64_T)
 check_type_size("_off_t" SIZEOF_OFF_T)
-#CHECK_FUNCTION_EXISTS_GLIBC(acl_set_file HAVE_ACL_SET_FILE)
-#CHECK_SYMBOL_EXISTS(acl_get_link_np "${INCLUDES}" HAVE_ACL_GET_LINK_NP)
+#check_function_exists_glibc(acl_set_file HAVE_ACL_SET_FILE)
+#check_symbol_exists(acl_get_link_np "${INCLUDES}" HAVE_ACL_GET_LINK_NP)
 check_include_file("stdint.h" HAVE_STDINT_H)
 #check_symbol_exists("addrinfo" "" HAVE_STRUCT_ADDRINFO)
 
@@ -44,6 +44,14 @@ check_c_source_compiles(
 check_c_source_compiles(
   "#include <sys/stat.h>\nint main(void) { struct _stat64 v; return sizeof(v); }"
   HAVE_STRUCT_STAT64
+)
+check_c_source_compiles(
+  "#include <sys/stat.h>\nint main(void) { struct _stat64 v; return sizeof(v); }"
+  HAVE_SYS_STAT_H
+)
+check_c_source_compiles(
+  "#include <unistd.h>\nint main(void) { return 0; }"
+  HAVE_UNISTD_H
 )
 
 configure_file(config.h.cmake.in config.h)
