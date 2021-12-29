@@ -122,9 +122,10 @@ __CPRAGMA_ONCE
 #include <malloc.h>
 #include <string.h>                             /* memset, memmove ... */
 #include <fcntl.h>
-#include <io.h>                                 /* write, read ... */
+//#include <io.h>                                 /* write, read ... */
+#include <w32_corecrt.h>
 
-typedef _stat64 stat64;
+//typedef _stat64 stat64;
 
 #if defined(HAVE_CONFIG_H)                      /* stand alone? */
 #ifndef  NEED_GETOPT
