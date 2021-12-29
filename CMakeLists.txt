@@ -12,6 +12,9 @@ include(CheckStructHasMember)
 
 check_type_exists(size_t "" HAVE_SIZE_T)
 check_type_exists(uint32_t "" HAVE_UINT32_T)
+check_type_exists(id_t "" HAVE_ID_T)
+check_type_exists(mode_t "" HAVE_MODE_T)
+check_type_exists(_off64_t "sys/_types.h" HAVE_OFF64_T)
 check_type_size("int32_t" SIZEOF_INT32_T)
 check_type_size("uint32_t" SIZEOF_UINT32_T)
 check_type_size("int" SIZEOF_INT)
@@ -19,8 +22,8 @@ check_type_size("int32_t" SIZEOF_INT32)
 check_type_size("uint32_t" SIZEOF_UINT32_T)
 check_type_size("long" SIZEOF_LONG_T)
 check_type_size("char*" SIZEOF_CHARP)
-check_type_size("off64_t" SIZEOF_OFF64_T)
-check_type_size("off_t" SIZEOF_OFF_T)
+check_type_size("_off64_t" SIZEOF_OFF64_T)
+check_type_size("_off_t" SIZEOF_OFF_T)
 #CHECK_FUNCTION_EXISTS_GLIBC(acl_set_file HAVE_ACL_SET_FILE)
 #CHECK_SYMBOL_EXISTS(acl_get_link_np "${INCLUDES}" HAVE_ACL_GET_LINK_NP)
 check_include_file("stdint.h" HAVE_STDINT_H)
@@ -35,11 +38,11 @@ check_c_source_compiles(
   HAVE_STRUCT_SOCKADDR_STORAGE
 )
 check_c_source_compiles(
-  "#include <sys/stat.h>\nint main(void) { struct stat v; return sizeof(v); }"
+  "#include <sys/stat.h>\nint main(void) { struct _stat32 v; return sizeof(v); }"
   HAVE_STRUCT_STAT
 )
 check_c_source_compiles(
-  "#include <sys/stat.h>\n#include <unistd.h>\nint main(void) { struct stat64 v; return sizeof(v); }"
+  "#include <sys/stat.h>\nint main(void) { struct _stat64 v; return sizeof(v); }"
   HAVE_STRUCT_STAT64
 )
 
