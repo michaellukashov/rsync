@@ -8,6 +8,7 @@ include(cmake/CheckTypeExists.cmake)
 include(CheckTypeSize)
 include(CheckIncludeFile)
 include(CheckSymbolExists)
+include(CheckStructHasMember)
 
 check_type_exists(size_t "" HAVE_SIZE_T)
 check_type_exists(uint32_t "" HAVE_UINT32_T)
@@ -18,10 +19,29 @@ check_type_size("int32_t" SIZEOF_INT32)
 check_type_size("uint32_t" SIZEOF_UINT32_T)
 check_type_size("long" SIZEOF_LONG_T)
 check_type_size("char*" SIZEOF_CHARP)
+check_type_size("off64_t" SIZEOF_OFF64_T)
+check_type_size("off_t" SIZEOF_OFF_T)
 #CHECK_FUNCTION_EXISTS_GLIBC(acl_set_file HAVE_ACL_SET_FILE)
 #CHECK_SYMBOL_EXISTS(acl_get_link_np "${INCLUDES}" HAVE_ACL_GET_LINK_NP)
 check_include_file("stdint.h" HAVE_STDINT_H)
-check_symbol_exists("addrinfo" "" HAVE_STRUCT_ADDRINFO)
+#check_symbol_exists("addrinfo" "" HAVE_STRUCT_ADDRINFO)
+
+check_c_source_compiles(
+  "#include <winsock2.h>\n#include <ws2def.h>\nint main(void) { struct addrinfo v; return sizeof(v); }"
+  HAVE_STRUCT_ADDRINFO
+)
+check_c_source_compiles(
+  "#include <winsock2.h>\n#include <ws2def.h>\nint main(void) { struct sockaddr_storage v; return sizeof(v); }"
+  HAVE_STRUCT_SOCKADDR_STORAGE
+)
+check_c_source_compiles(
+  "#include <sys/stat.h>\nint main(void) { struct stat v; return sizeof(v); }"
+  HAVE_STRUCT_STAT
+)
+check_c_source_compiles(
+  "#include <sys/stat.h>\n#include <unistd.h>\nint main(void) { struct stat64 v; return sizeof(v); }"
+  HAVE_STRUCT_STAT64
+)
 
 configure_file(config.h.cmake.in config.h)
 
