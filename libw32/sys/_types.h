@@ -120,6 +120,7 @@ typedef long _fpos_t;		/* XXX must match off_t in <sys/types.h> */
 #ifdef __LARGE64_FILES
 #ifndef __machine_fpos64_t_defined
 typedef _off64_t _fpos64_t;
+typedef off64_t _fpos64_t;
 #endif
 #endif
 
