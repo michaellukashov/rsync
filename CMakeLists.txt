@@ -23,8 +23,8 @@ check_type_size("int32_t" SIZEOF_INT32)
 check_type_size("uint32_t" SIZEOF_UINT32_T)
 check_type_size("long" SIZEOF_LONG_T)
 check_type_size("char*" SIZEOF_CHARP)
-check_type_size("_off64_t" SIZEOF_OFF64_T)
-check_type_size("_off_t" SIZEOF_OFF_T)
+#check_type_size("_off64_t" SIZEOF_OFF64_T)
+#check_type_size("_off_t" SIZEOF_OFF_T)
 #check_function_exists_glibc(acl_set_file HAVE_ACL_SET_FILE)
 #check_symbol_exists(acl_get_link_np "${INCLUDES}" HAVE_ACL_GET_LINK_NP)
 check_include_file("stdint.h" HAVE_STDINT_H)
@@ -54,12 +54,22 @@ check_c_source_compiles(
 #  "#include <unistd.h>\nint main(void) { return 0; }"
 #  HAVE_UNISTD_H
 #)
+set(SIZEOF_OFF_T 8)
+set(SIZEOF_LONG 4)
+set(SIZEOF_OFF64_T 8)
+set(SIZEOF_INT64_T 8)
+
 set(HAVE_UNISTD_H 1)
 set(HAVE_STRERROR 1)
 set(HAVE_GETTIMEOFDAY_TZ 1)
 set(HAVE_DIRENT_H 1)
 set(HAVE_LIBPOPT 1)
+#set(HAVE_STRERROR 1)
 #set(HAVE_FLOAT_H 1)
+set(RSYNC_PATH "\"rsync\"")
+set(NOBODY_GROUP "\"nobody\"")
+set(NOBODY_USER "\"nobody\"")
+set(RSYNCD_SYSCONF "\"/etc/rsyncd.conf\"")
 
 configure_file(config.h.cmake.in config.h)
 
