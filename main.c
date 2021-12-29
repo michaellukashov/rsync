@@ -28,6 +28,7 @@
 #include <locale.h>
 #endif
 #include <popt.h>
+#include <sys/signal.h>
 #ifdef __TANDEM
 #include <floss.h(floss_execlp)>
 #endif
