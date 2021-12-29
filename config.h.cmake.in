@@ -492,6 +492,7 @@
 
 /* Define to 1 if the system has the type `struct stat64'. */
 #undef HAVE_STRUCT_STAT64
+#cmakedefine HAVE_STRUCT_STAT64 @HAVE_STRUCT_STAT64@
 
 /* Define to 1 if `st_mtimensec' is a member of `struct stat'. */
 #undef HAVE_STRUCT_STAT_ST_MTIMENSEC
