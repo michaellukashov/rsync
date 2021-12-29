@@ -1107,3 +1107,14 @@
 /* Define to `int' if <sys/types.h> doesn't define. */
 #undef uid_t
 #cmakedefine uid_t @uid_t@
+
+#ifndef _SSIZE_T_DEFINED
+#define _SSIZE_T_DEFINED
+#undef ssize_t
+#ifdef _WIN64
+typedef __int64 ssize_t;
+#else
+typedef int ssize_t;
+#endif /* _WIN64 */
+#define ssize_t ssize_t
+#endif /* _SSIZE_T_DEFINED */
