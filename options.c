@@ -23,6 +23,7 @@
 #include "itypes.h"
 #include "ifuncs.h"
 #include <popt.h>
+#include <config.h>
 
 extern int module_id;
 extern int local_server;
