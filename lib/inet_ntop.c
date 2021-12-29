@@ -17,6 +17,7 @@
 
 
 #include "rsync.h"
+#include <win32_errno.h>
 
 #define NS_INT16SZ	 2
 #define NS_IN6ADDRSZ	16

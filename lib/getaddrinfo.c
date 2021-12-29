@@ -377,10 +377,10 @@ const char *gai_strerror(int errcode)
 		case EAI_MEMORY:
 			return "Not enough memory";
 #endif
-#ifdef EAI_NODATA
-		case EAI_NODATA:
-			return "No host data of that type was found";
-#endif
+//#ifdef EAI_NODATA
+//		case EAI_NODATA:
+//			return "No host data of that type was found";
+//#endif
 #ifdef EAI_SERVICE
 		case EAI_SERVICE:
 			return "Class type not found";
