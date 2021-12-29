@@ -11,13 +11,13 @@ extern "C" {
 #include <sys/features.h>
 #include <sys/types.h>
 #include <sys/_sigset.h>
-#include <sys/_timespec.h>
+//#include <sys/_timespec.h>
 #include <stdint.h>
 
-#if !defined(_SIGSET_T_DECLARED)
-#define	_SIGSET_T_DECLARED
-typedef	__sigset_t	sigset_t;
-#endif
+//#if !defined(_SIGSET_T_DECLARED)
+//#define	_SIGSET_T_DECLARED
+//typedef	__sigset_t	sigset_t;
+//#endif
 
 #if defined(__CYGWIN__)
 #include <cygwin/signal.h>
