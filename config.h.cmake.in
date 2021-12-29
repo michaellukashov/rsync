@@ -5,82 +5,106 @@
 
 /* Define to 1 if link() can hard-link special files. */
 #undef CAN_HARDLINK_SPECIAL
+#cmakedefine CAN_HARDLINK_SPECIAL @CAN_HARDLINK_SPECIAL@
 
 /* Define to 1 if link() can hard-link symlinks. */
 #undef CAN_HARDLINK_SYMLINK
+#cmakedefine CAN_HARDLINK_SYMLINK @CAN_HARDLINK_SYMLINK@
 
 /* Define to 1 if chown modifies symlinks. */
 #undef CHOWN_MODIFIES_SYMLINK
+#cmakedefine CHOWN_MODIFIES_SYMLINK @CHOWN_MODIFIES_SYMLINK@
 
 /* Undefine if you do not want locale features. By default this is defined. */
 #undef CONFIG_LOCALE
+#cmakedefine CONFIG_LOCALE @CONFIG_LOCALE@
 
 /* Define to one of `_getb67', `GETB67', `getb67' for Cray-2 and Cray-YMP
    systems. This function is required for `alloca.c' support on those systems.
    */
 #undef CRAY_STACKSEG_END
+#cmakedefine CRAY_STACKSEG_END @CRAY_STACKSEG_END@
 
 /* Define to 1 if using `alloca.c'. */
 #undef C_ALLOCA
+#cmakedefine C_ALLOCA @C_ALLOCA@
 
 /* Define to 1 if using external zlib */
 #undef EXTERNAL_ZLIB
+#cmakedefine EXTERNAL_ZLIB @EXTERNAL_ZLIB@
 
 /* Used to make "checker" understand that FD_ZERO() clears memory. */
 #undef FORCE_FD_ZERO_MEMSET
+#cmakedefine FORCE_FD_ZERO_MEMSET @FORCE_FD_ZERO_MEMSET@
 
 /* Define to the type of elements in the array set by `getgroups'. Usually
    this is either `int' or `gid_t'. */
 #undef GETGROUPS_T
+#cmakedefine GETGROUPS_T @GETGROUPS_T@
 
 /* Define to 1 if the `getpgrp' function requires zero arguments. */
 #undef GETPGRP_VOID
+#cmakedefine GETPGRP_VOID @GETPGRP_VOID@
 
 /* Define to 1 if you have the `aclsort' function. */
 #undef HAVE_ACLSORT
+#cmakedefine HAVE_ACLSORT @HAVE_ACLSORT@
 
 /* true if you have acl_get_perm_np */
 #undef HAVE_ACL_GET_PERM_NP
+#cmakedefine HAVE_ACL_GET_PERM_NP @HAVE_ACL_GET_PERM_NP@
 
 /* Define to 1 if you have the <acl/libacl.h> header file. */
 #undef HAVE_ACL_LIBACL_H
+#cmakedefine HAVE_ACL_LIBACL_H @HAVE_ACL_LIBACL_H@
 
 /* true if you have AIX ACLs */
 #undef HAVE_AIX_ACLS
+#cmakedefine HAVE_AIX_ACLS @HAVE_AIX_ACLS@
 
 /* Define to 1 if you have `alloca', as a function or macro. */
 #undef HAVE_ALLOCA
+#cmakedefine HAVE_ALLOCA @HAVE_ALLOCA@
 
 /* Define to 1 if you have <alloca.h> and it should be used (not on Ultrix).
    */
 #undef HAVE_ALLOCA_H
+#cmakedefine HAVE_ALLOCA_H @HAVE_ALLOCA_H@
 
 /* Define to 1 if you have the <arpa/inet.h> header file. */
 #undef HAVE_ARPA_INET_H
+#cmakedefine HAVE_ARPA_INET_H @HAVE_ARPA_INET_H@
 
 /* Define to 1 if you have the <arpa/nameser.h> header file. */
 #undef HAVE_ARPA_NAMESER_H
+#cmakedefine HAVE_ARPA_NAMESER_H @HAVE_ARPA_NAMESER_H@
 
 /* Define to 1 to enable ASM optimizations */
 #undef HAVE_ASM
+#cmakedefine HAVE_ASM @HAVE_ASM@
 
 /* Define to 1 if you have the `asprintf' function. */
 #undef HAVE_ASPRINTF
+#cmakedefine HAVE_ASPRINTF @HAVE_ASPRINTF@
 
 /* Define to 1 if you have the `attropen' function. */
 #undef HAVE_ATTROPEN
 
 /* Define to 1 if you have the <attr/xattr.h> header file. */
 #undef HAVE_ATTR_XATTR_H
+#cmakedefine HAVE_ATTR_XATTR_H @HAVE_ATTR_XATTR_H@
 
 /* Define to 1 if readdir() is broken */
 #undef HAVE_BROKEN_READDIR
+#cmakedefine HAVE_BROKEN_READDIR @HAVE_BROKEN_READDIR@
 
 /* Define to 1 if vsprintf has a C99-compatible return value */
 #undef HAVE_C99_VSNPRINTF
+#cmakedefine HAVE_C99_VSNPRINTF @HAVE_C99_VSNPRINTF@
 
 /* Define to 1 if you have the `chflags' function. */
 #undef HAVE_CHFLAGS
+#cmakedefine HAVE_CHFLAGS @HAVE_CHFLAGS@
 
 /* Define to 1 if you have the `chmod' function. */
 #undef HAVE_CHMOD
@@ -788,30 +812,38 @@
 
 /* Undefine if you do not want LZ4 compression. By default this is defined. */
 #undef SUPPORT_LZ4
+#cmakedefine SUPPORT_LZ4 @SUPPORT_LZ4@
 
 /* Define to 1 to add support for extended attributes */
 #undef SUPPORT_XATTRS
+#cmakedefine SUPPORT_XATTRS @SUPPORT_XATTRS@
 
 /* Undefine if you do not want xxhash checksums. By default this is defined.
    */
 #undef SUPPORT_XXHASH
+#cmakedefine SUPPORT_XXHASH @SUPPORT_XXHASH@
 
 /* Undefine if you do not want zstd compression. By default this is defined.
    */
 #undef SUPPORT_ZSTD
+#cmakedefine SUPPORT_ZSTD @SUPPORT_ZSTD@
 
 /* Define to 1 if you can safely include both <sys/time.h> and <time.h>. */
 #undef TIME_WITH_SYS_TIME
+#cmakedefine TIME_WITH_SYS_TIME @TIME_WITH_SYS_TIME@
 
 /* Define to 1 if you want rsync to make use of iconv_open() */
 #undef USE_ICONV_OPEN
+#cmakedefine USE_ICONV_OPEN @USE_ICONV_OPEN@
 
 /* Undefine if you do not want to use openssl crypto library. By default this
    is defined. */
 #undef USE_OPENSSL
+#cmakedefine USE_OPENSSL @USE_OPENSSL@
 
 /* String to pass to iconv() for the UTF-8 charset. */
 #undef UTF8_CHARSET
+#cmakedefine UTF8_CHARSET @UTF8_CHARSET@
 
 /* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
    significant byte first (like Motorola and SPARC, unlike Intel). */
