@@ -620,7 +620,7 @@ typedef unsigned int size_t;
 #define STRUCT_STAT struct _stat64
 #define SIZEOF_CAPITAL_OFF_T SIZEOF_OFF_T
 #else
-#define OFF_T _off64_t
+#define OFF_T _off_t
 #define STRUCT_STAT struct _stat64
 #define USE_STAT64_FUNCS 1
 #define SIZEOF_CAPITAL_OFF_T SIZEOF_OFF64_T
