@@ -1,5 +1,14 @@
 #include "rsync.h"
 
+//#include <sys/stat.h>
+//#include <unistd.h>
+
+//#include <sys/stat.h>
+//#include <sys/_types.h>
+//#include <unistd.h>
+//_off64_t v1;
+//struct _stat64 v;
+
 #define POOL_DEF_EXTENT	(32 * 1024)
 
 #define POOL_QALIGN_P2		(1<<16)		/* power-of-2 qalign	*/
