@@ -615,6 +615,13 @@ typedef unsigned int size_t;
 #endif
 #endif
 
+//#include <sys/types.h>
+//#include <windows.h>
+//#include <sys/stat.h>
+////struct stat64 v;
+//_off64_t l1;
+//struct stat v;
+
 #if SIZEOF_OFF_T == 8 || !SIZEOF_OFF64_T || !defined HAVE_STRUCT_STAT64
 #define OFF_T off_t
 #define STRUCT_STAT struct stat
