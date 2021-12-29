@@ -92,6 +92,7 @@ typedef __uint32_t __mode_t;
 #endif
 #endif
 
+#define __extension__
 #ifndef __machine_off64_t_defined
 __extension__ typedef long long _off64_t;
 #endif
