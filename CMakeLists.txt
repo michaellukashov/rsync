@@ -13,7 +13,8 @@ include(CheckStructHasMember)
 check_type_exists(size_t "" HAVE_SIZE_T)
 check_type_exists(uint32_t "" HAVE_UINT32_T)
 check_type_exists(id_t "" HAVE_ID_T)
-check_type_exists(mode_t "" HAVE_MODE_T)
+#check_type_exists(mode_t "sys/utypes.h" HAVE_MODE_T)
+set(HAVE_MODE_T 1)
 check_type_exists(_off64_t "sys/_types.h" HAVE_OFF64_T)
 check_type_size("int32_t" SIZEOF_INT32_T)
 check_type_size("uint32_t" SIZEOF_UINT32_T)
@@ -49,10 +50,13 @@ check_c_source_compiles(
   "#include <sys/stat.h>\nint main(void) { struct _stat64 v; return sizeof(v); }"
   HAVE_SYS_STAT_H
 )
-check_c_source_compiles(
-  "#include <unistd.h>\nint main(void) { return 0; }"
-  HAVE_UNISTD_H
-)
+#check_c_source_compiles(
+#  "#include <unistd.h>\nint main(void) { return 0; }"
+#  HAVE_UNISTD_H
+#)
+set(HAVE_UNISTD_H 1)
+set(HAVE_STRERROR 1)
+set(HAVE_GETTIMEOFDAY_TZ 1)
 
 configure_file(config.h.cmake.in config.h)
 
