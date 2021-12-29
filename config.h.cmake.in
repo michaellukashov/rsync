@@ -1118,3 +1118,30 @@ typedef int ssize_t;
 #endif /* _WIN64 */
 #define ssize_t ssize_t
 #endif /* _SSIZE_T_DEFINED */
+
+#if !defined(HAVE_PID_T)
+typedef int pid_t;                              /* process identifier */
+#define HAVE_PID_T
+#endif
+
+#define FLT_MAX  3.40282347e+38F         /* IEEE float */
+#define DBL_MAX  1.7976931348623157e+308 /* IEEE double */
+#define FLT_MANT_DIG  24
+#define FLT_MAX_EXP  128
+#define DBL_MANT_DIG  53
+#define DBL_MAX_EXP 1024
+
+#ifndef FLT_MAX
+#   ifdef MAXFLOAT
+#	define FLT_MAX	MAXFLOAT
+#   else
+#	define FLT_MAX	3.402823466E+38F
+#   endif
+#endif
+#ifndef FLT_MIN
+#   ifdef MINFLOAT
+#	define FLT_MIN	MINFLOAT
+#   else
+#	define FLT_MIN	1.175494351E-38F
+#   endif
+#endif
