@@ -247,6 +247,7 @@ static char *expand_vars(const char *str)
  * FN_{LOCAL,GLOBAL}_{TYPE}() definition for all the lp_var_name() accessors.
  */
 
+#if 0
 #include "daemon-parm.h"
 
 /* Initialise the Default all_vars structure. */
@@ -590,3 +591,4 @@ int lp_number(char *name)
 
 	return i;
 }
+#endif //if 0

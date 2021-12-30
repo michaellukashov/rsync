@@ -35,6 +35,22 @@
 #endif
 #include <netinet/tcp.h>
 
+#ifdef WIN32
+#ifndef WINVER
+#define WINVER 0x0501
+#endif
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0501
+#endif
+#include <inttypes.h>
+#include <winsock2.h>
+#include <ctype.h>
+#include <ws2tcpip.h>
+#include <errno.h>
+#include <win32_errno.h>
+#endif
+#include <sys/signal.h>
+
 extern char *bind_address;
 extern char *sockopts;
 extern int default_af_hint;

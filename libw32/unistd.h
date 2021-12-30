@@ -81,7 +81,8 @@ __CPRAGMA_ONCE
 #if defined(WIN32) && (WIN32 > 0x100)
 #define _WIN32_WINNT WIN32
 #else
-#define _WIN32_WINNT 0x400                      /* entry level */
+//#define _WIN32_WINNT 0x400                      /* entry level */
+#define _WIN32_WINNT 0x501                      /* entry level */
 #endif
 #elif (_WIN32_WINNT) < 0x400
 //  Minimum system required Minimum value for _WIN32_WINNT and WINVER

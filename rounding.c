@@ -18,6 +18,7 @@
  */
 
 #include "rsync.h"
+#include "rounding.h"
 
 #define ARRAY_LEN (EXTRA_ROUNDING+1)
 #define SIZEOF(x) ((long int)sizeof (x))
