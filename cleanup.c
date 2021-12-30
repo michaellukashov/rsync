@@ -22,6 +22,8 @@
 
 #include "rsync.h"
 
+#include <sys/signal.h>
+
 extern int dry_run;
 extern int am_server;
 extern int am_daemon;
