@@ -1,6 +1,8 @@
 #ifndef _ZBUILD_H
 #define _ZBUILD_H
 
+#include <unistd.h>
+
 /* This has to be first include that defines any types */
 #if defined(_MSC_VER)
 #ifndef _SSIZE_T_DEFINED
