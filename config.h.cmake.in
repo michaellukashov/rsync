@@ -1114,7 +1114,6 @@
 #cmakedefine HAVE_STRING_H @HAVE_STRING_H@
 #cmakedefine HAVE_MEMORY_H @HAVE_MEMORY_H@
 
-#if 0
 #ifndef _SSIZE_T_DEFINED
 #define _SSIZE_T_DEFINED
 #undef ssize_t
@@ -1125,7 +1124,6 @@ typedef int ssize_t;
 #endif /* _WIN64 */
 #define ssize_t ssize_t
 #endif /* _SSIZE_T_DEFINED */
-#endif
 
 #if !defined(HAVE_PID_T)
 typedef int pid_t;                              /* process identifier */
