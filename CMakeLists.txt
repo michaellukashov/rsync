@@ -67,8 +67,16 @@ set(HAVE_LIBPOPT 1)
 set(HAVE_UTIME 1)
 set(HAVE_FCNTL_H 1)
 set(HAVE_SYS_FCNTL_H 1)
+set(HAVE_CONFIG_H 1)
+set(HAVE_SYS_TYPES_H 1)
+set(STDC_HEADERS 1)
+set(HAVE_STDLIB_H 1)
+set(HAVE_STRING_H 1)
+set(HAVE_MEMORY_H 1)
+set(HAVE_STDINT_H 1)
 #set(HAVE_STRERROR 1)
 #set(HAVE_FLOAT_H 1)
+
 set(RSYNC_PATH "\"rsync\"")
 set(RSYNC_RSH "\"ssh\"")
 set(NOBODY_GROUP "\"nobody\"")
@@ -103,6 +111,7 @@ add_library(rsync_lib OBJECT
 
 target_include_directories(rsync_lib BEFORE PRIVATE
   lib
+#  libw32/msvc
   libw32
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
@@ -126,6 +135,7 @@ add_library(popt_lib OBJECT
 
 target_include_directories(popt_lib BEFORE PRIVATE
   lib
+#  libw32/msvc
   libw32
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
@@ -198,6 +208,7 @@ add_custom_target(rsync_sources SOURCES
 
 target_include_directories(rsync BEFORE PRIVATE
   lib
+#  libw32/msvc
   libw32
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
