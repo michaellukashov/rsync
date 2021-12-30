@@ -572,7 +572,7 @@ LIBW32_API int          mknod (const char *path, int mode, int dev);
 #endif
 
 #if !defined(fcntl)
-LIBW32_API int          fcntl (int fd, int ctrl, int);
+LIBW32_API int          fcntl (int fd, int ctrl, ...);
 #endif
 LIBW32_API int          w32_fcntl (int fd, int ctrl, int);
 LIBW32_API int          w32_fsync (int fildes);
