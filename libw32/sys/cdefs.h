@@ -115,6 +115,9 @@ __CPRAGMA_ONCE
 #     elif defined(__MINGW32__)
 #        define __PDECL
 #        define __PDECL2
+#     elif defined(RC_INVOKED)
+#        define __PDECL
+#        define __PDECL2
 #     else
 #        error cdefs.h: unknown target compiler ...
 #     endif
@@ -231,6 +234,9 @@ __CPRAGMA_ONCE
 #     define __packed_post__    /**/
 #  elif ((defined(_MSC_VER) && _MSC_VER >= 800) || \
             defined(__BORLANDC__) || defined(__PARADIGM__) )
+#     define __packed_pre__     /**/
+#     define __packed_post__    /**/
+#  elif defined(RC_INVOKED)
 #     define __packed_pre__     /**/
 #     define __packed_post__    /**/
 #  elif defined(__WATCOMC__)

@@ -56,6 +56,8 @@ __CPRAGMA_ONCE
 
 #elif defined(_MSC_VER)
 
+#elif defined(RC_INVOKED)
+
 #else
 #error utypes.h: Unknown compiler
 #endif
