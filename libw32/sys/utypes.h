@@ -149,9 +149,12 @@ typedef int gid_t;
 #if !defined(id_t)
 typedef int id_t;                               /* used as a general identifier; can contain least a pid_t, uid_t, or gid_t. */
 #endif
+#ifndef _SSIZE_T_DEFINED
+#define _SSIZE_T_DEFINED
 #if !defined(ssize_t)
 typedef int ssize_t;
 #define ssize_t ssize_t                         /* see libssh */
+#endif
 #endif
 #if !defined(mode_t)
 typedef unsigned short mode_t;
