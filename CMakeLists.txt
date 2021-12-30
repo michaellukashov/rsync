@@ -10,11 +10,10 @@ include(CheckIncludeFile)
 include(CheckSymbolExists)
 include(CheckStructHasMember)
 
-check_type_exists(size_t "" HAVE_SIZE_T)
-check_type_exists(uint32_t "" HAVE_UINT32_T)
-check_type_exists(id_t "" HAVE_ID_T)
+#check_type_exists(size_t "" HAVE_SIZE_T)
+#check_type_exists(uint32_t "" HAVE_UINT32_T)
+#check_type_exists(id_t "" HAVE_ID_T)
 #check_type_exists(mode_t "sys/utypes.h" HAVE_MODE_T)
-set(HAVE_MODE_T 1)
 check_type_exists(_off64_t "sys/_types.h" HAVE_OFF64_T)
 check_type_size("int32_t" SIZEOF_INT32_T)
 check_type_size("uint32_t" SIZEOF_UINT32_T)
@@ -76,6 +75,10 @@ set(HAVE_MEMORY_H 1)
 set(HAVE_STDINT_H 1)
 #set(HAVE_STRERROR 1)
 #set(HAVE_FLOAT_H 1)
+set(HAVE_MODE_T 1)
+set(HAVE_SIZE_T 1)
+set(HAVE_UINT32_T 1)
+set(HAVE_ID_T 1)
 
 set(RSYNC_PATH "\"rsync\"")
 set(RSYNC_RSH "\"ssh\"")
@@ -173,11 +176,9 @@ add_executable(rsync
   xattrs.c
   access.c
   loadparm.c
-  token.c
   clientname.c
   t_stub.c
   authenticate.c
-  batch.c
   getgroups.c
   acls.c
   fileio.c
@@ -199,6 +200,8 @@ add_executable(rsync
   chmod.c
   connection.c
   wildtest.c
+  batch.c
+  token.c
 #  testrun.c
 )
 
