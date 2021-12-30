@@ -39,14 +39,15 @@ typedef __uint64_t	u_int64_t;
 typedef __intptr_t register_t;
 #define __BIT_TYPES_DEFINED__ 1
 
+#if 0
 #ifndef __need_inttypes
 
-//#define _SYS_TYPES_H
-//#include <sys/_types.h>
-//#include <sys/_stdint.h>
+#define _SYS_TYPES_H
+#include <sys/_types.h>
+#include <sys/_stdint.h>
 
 #if __BSD_VISIBLE
-//#include <machine/endian.h>
+#include <machine/endian.h>
 #include <sys/select.h>
 #  define	physadr		physadr_t
 #  define	quad		quad_t
@@ -103,42 +104,42 @@ typedef	__blksize_t	blksize_t;
 #define	_BLKSIZE_T_DECLARED
 #endif
 
-//#if !defined(__clock_t_defined) && !defined(_CLOCK_T_DECLARED)
-//typedef	_CLOCK_T_	clock_t;
-//#define	__clock_t_defined
-//#define	_CLOCK_T_DECLARED
-//#endif
+#if !defined(__clock_t_defined) && !defined(_CLOCK_T_DECLARED)
+typedef	_CLOCK_T_	clock_t;
+#define	__clock_t_defined
+#define	_CLOCK_T_DECLARED
+#endif
 
-//#if !defined(__time_t_defined) && !defined(_TIME_T_DECLARED)
-//typedef	_TIME_T_	time_t;
-//#define	__time_t_defined
-//#define	_TIME_T_DECLARED
-//#endif
+#if !defined(__time_t_defined) && !defined(_TIME_T_DECLARED)
+typedef	_TIME_T_	time_t;
+#define	__time_t_defined
+#define	_TIME_T_DECLARED
+#endif
 
-//#ifndef __daddr_t_defined
-//typedef	long	daddr_t;
-//#define __daddr_t_defined
-//#endif
-//#ifndef __caddr_t_defined
-//typedef	char *	caddr_t;
-//#define __caddr_t_defined
-//#endif
+#ifndef __daddr_t_defined
+typedef	long	daddr_t;
+#define __daddr_t_defined
+#endif
+#ifndef __caddr_t_defined
+typedef	char *	caddr_t;
+#define __caddr_t_defined
+#endif
 
-//#ifndef _FSBLKCNT_T_DECLARED		/* for statvfs() */
-//typedef	__fsblkcnt_t	fsblkcnt_t;
-//typedef	__fsfilcnt_t	fsfilcnt_t;
-//#define	_FSBLKCNT_T_DECLARED
-//#endif
+#ifndef _FSBLKCNT_T_DECLARED		/* for statvfs() */
+typedef	__fsblkcnt_t	fsblkcnt_t;
+typedef	__fsfilcnt_t	fsfilcnt_t;
+#define	_FSBLKCNT_T_DECLARED
+#endif
 
-//#ifndef _ID_T_DECLARED
-//typedef	__id_t		id_t;		/* can hold a uid_t or pid_t */
-//#define	_ID_T_DECLARED
-//#endif
+#ifndef _ID_T_DECLARED
+typedef	__id_t		id_t;		/* can hold a uid_t or pid_t */
+#define	_ID_T_DECLARED
+#endif
 
-//#ifndef _INO_T_DECLARED
-//typedef	__ino_t		ino_t;		/* inode number */
-//#define	_INO_T_DECLARED
-//#endif
+#ifndef _INO_T_DECLARED
+typedef	__ino_t		ino_t;		/* inode number */
+#define	_INO_T_DECLARED
+#endif
 
 #if defined(__i386__) && (defined(GO32) || defined(__MSDOS__))
 typedef	char *		addr_t;
@@ -153,78 +154,79 @@ typedef unsigned long vm_size_t;
  * how the file was compiled (e.g. -mint16 vs -mint32, etc.).
  */
 
-//#ifndef _OFF_T_DECLARED
-//typedef	__off_t		off_t;		/* file offset */
-//#define	_OFF_T_DECLARED
-//#endif
-//#ifndef _DEV_T_DECLARED
-//typedef	__dev_t		dev_t;		/* device number or struct cdev */
-//#define	_DEV_T_DECLARED
-//#endif
-//#ifndef _UID_T_DECLARED
-//typedef	__uid_t		uid_t;		/* user id */
-//#define	_UID_T_DECLARED
-//#endif
-//#ifndef _GID_T_DECLARED
-//typedef	__gid_t		gid_t;		/* group id */
-//#define	_GID_T_DECLARED
-//#endif
+#ifndef _OFF_T_DECLARED
+typedef	__off_t		off_t;		/* file offset */
+#define	_OFF_T_DECLARED
+#endif
+#ifndef _DEV_T_DECLARED
+typedef	__dev_t		dev_t;		/* device number or struct cdev */
+#define	_DEV_T_DECLARED
+#endif
+#ifndef _UID_T_DECLARED
+typedef	__uid_t		uid_t;		/* user id */
+#define	_UID_T_DECLARED
+#endif
+#ifndef _GID_T_DECLARED
+typedef	__gid_t		gid_t;		/* group id */
+#define	_GID_T_DECLARED
+#endif
 
-//#ifndef _PID_T_DECLARED
-//typedef	__pid_t		pid_t;		/* process id */
-//#define	_PID_T_DECLARED
-//#endif
+#ifndef _PID_T_DECLARED
+typedef	__pid_t		pid_t;		/* process id */
+#define	_PID_T_DECLARED
+#endif
 
-//#ifndef _KEY_T_DECLARED
-//typedef	__key_t		key_t;		/* IPC key */
-//#define	_KEY_T_DECLARED
-//#endif
+#ifndef _KEY_T_DECLARED
+typedef	__key_t		key_t;		/* IPC key */
+#define	_KEY_T_DECLARED
+#endif
 
-//#ifndef _SSIZE_T_DECLARED
-//typedef _ssize_t ssize_t;
-//#define	_SSIZE_T_DECLARED
-//#endif
+#ifndef _SSIZE_T_DECLARED
+typedef _ssize_t ssize_t;
+#define	_SSIZE_T_DECLARED
+#endif
 
-//#ifndef _MODE_T_DECLARED
-//typedef	__mode_t	mode_t;		/* permissions */
-//#define	_MODE_T_DECLARED
-//#endif
+#ifndef _MODE_T_DECLARED
+typedef	__mode_t	mode_t;		/* permissions */
+#define	_MODE_T_DECLARED
+#endif
 
-//#ifndef _NLINK_T_DECLARED
-//typedef	__nlink_t	nlink_t;	/* link count */
-//#define	_NLINK_T_DECLARED
-//#endif
+#ifndef _NLINK_T_DECLARED
+typedef	__nlink_t	nlink_t;	/* link count */
+#define	_NLINK_T_DECLARED
+#endif
 
-//#if !defined(__clockid_t_defined) && !defined(_CLOCKID_T_DECLARED)
-//typedef	__clockid_t	clockid_t;
-//#define	__clockid_t_defined
-//#define	_CLOCKID_T_DECLARED
-//#endif
+#if !defined(__clockid_t_defined) && !defined(_CLOCKID_T_DECLARED)
+typedef	__clockid_t	clockid_t;
+#define	__clockid_t_defined
+#define	_CLOCKID_T_DECLARED
+#endif
 
-//#if !defined(__timer_t_defined) && !defined(_TIMER_T_DECLARED)
-//typedef	__timer_t	timer_t;
-//#define	__timer_t_defined
-//#define	_TIMER_T_DECLARED
-//#endif
+#if !defined(__timer_t_defined) && !defined(_TIMER_T_DECLARED)
+typedef	__timer_t	timer_t;
+#define	__timer_t_defined
+#define	_TIMER_T_DECLARED
+#endif
 
-//#ifndef _USECONDS_T_DECLARED
-//typedef	__useconds_t	useconds_t;	/* microseconds (unsigned) */
-//#define	_USECONDS_T_DECLARED
-//#endif
+#ifndef _USECONDS_T_DECLARED
+typedef	__useconds_t	useconds_t;	/* microseconds (unsigned) */
+#define	_USECONDS_T_DECLARED
+#endif
 
-//#ifndef _SUSECONDS_T_DECLARED
-//typedef	__suseconds_t	suseconds_t;
-//#define	_SUSECONDS_T_DECLARED
-//#endif
+#ifndef _SUSECONDS_T_DECLARED
+typedef	__suseconds_t	suseconds_t;
+#define	_SUSECONDS_T_DECLARED
+#endif
 
-//typedef	__int64_t	sbintime_t;
+typedef	__int64_t	sbintime_t;
 
-//#include <sys/features.h>
-//#include <sys/_pthreadtypes.h>
-//#include <machine/types.h>
+#include <sys/features.h>
+#include <sys/_pthreadtypes.h>
+#include <machine/types.h>
 
 #endif  /* !__need_inttypes */
 
 #undef __need_inttypes
+#endif
 
 #endif	/* _SYS_TYPES_H */
