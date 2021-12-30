@@ -208,13 +208,14 @@ struct eflock {
 #endif	/* __MISC_VISIBLE */
 
 #include <sys/types.h>
+//#include <sys/utypes.h>
 #include <sys/stat.h>		/* sigh. for the mode bits for open/creat */
 
 extern int open (const char *, int, ...);
 #if __ATFILE_VISIBLE
 extern int openat (int, const char *, int, ...);
 #endif
-extern int creat (const char *, mode_t);
+extern int creat (const char *, ...); //mode_t);
 extern int fcntl (int, int, ...);
 #if __BSD_VISIBLE
 extern int flock (int, int);
