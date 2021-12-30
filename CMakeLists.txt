@@ -180,7 +180,6 @@ add_executable(rsync
   compat.c
   generator.c
   rsync.c
-  tls.c
   checksum.c
   uidlist.c
   cleanup.c
@@ -188,9 +187,7 @@ add_executable(rsync
   access.c
   loadparm.c
   clientname.c
-  t_stub.c
   authenticate.c
-  getgroups.c
   acls.c
   fileio.c
   hashtable.c
@@ -199,21 +196,24 @@ add_executable(rsync
   params.c
   sender.c
   socket.c
-  rounding.c
   delete.c
-  getfsdev.c
   pipe.c
   progress.c
   receiver.c
-  t_unsafe.c
   backup.c
-  trimslash.c
   chmod.c
   connection.c
-  wildtest.c
   batch.c
   token.c
+#  t_stub.c
+#  rounding.c
+#  trimslash.c
+#  getgroups.c
+#  wildtest.c
+#  t_unsafe.c
+#  getfsdev.c
 #  testrun.c
+#  tls.c
 )
 
 add_custom_target(rsync_sources SOURCES
