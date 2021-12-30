@@ -11,13 +11,17 @@ extern "C" {
 #include <sys/features.h>
 #include <sys/types.h>
 #include <sys/_sigset.h>
-//#include <sys/_timespec.h>
+#if 0
+#include <sys/_timespec.h>
+#endif
 #include <stdint.h>
 
-//#if !defined(_SIGSET_T_DECLARED)
-//#define	_SIGSET_T_DECLARED
-//typedef	__sigset_t	sigset_t;
-//#endif
+#if 0
+#if !defined(_SIGSET_T_DECLARED)
+#define	_SIGSET_T_DECLARED
+typedef	__sigset_t	sigset_t;
+#endif
+#endif
 
 #if defined(__CYGWIN__)
 #include <cygwin/signal.h>
@@ -73,6 +77,7 @@ typedef struct {
 } siginfo_t;
 #endif /* defined(_POSIX_REALTIME_SIGNALS) || __POSIX_VISIBLE >= 199309 */
 
+#if 0
 #if defined(__rtems__)
 
 /*  3.3.8 Synchronously Accept a Signal, P1003.1b-1993, p. 76 */
@@ -127,6 +132,7 @@ struct sigaction
 };
 #endif /* defined(__rtems__) */
 #endif /* defined(__CYGWIN__) */
+#endif
 
 #if __BSD_VISIBLE || __XSI_VISIBLE >= 4 || __POSIX_VISIBLE >= 200809
 /*
@@ -203,6 +209,7 @@ int sigwait (const sigset_t *, int *);
 #endif /* !__CYGWIN__ && !__rtems__ */
 #endif /* __POSIX_VISIBLE */
 
+#if 0
 /* There are two common sigpause variants, both of which take an int argument.
    If you request _XOPEN_SOURCE or _GNU_SOURCE, you get the System V version,
    which removes the given signal from the process's signal mask; otherwise
@@ -254,6 +261,7 @@ int sig2str(int, char *);
 int str2sig(const char *__restrict, int *__restrict);
 
 #endif /* __MISC_VISIBLE */
+#endif
 
 #if defined(___AM29K__)
 /* These all need to be defined for ANSI C, but I don't think they are
