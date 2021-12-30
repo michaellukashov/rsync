@@ -72,6 +72,8 @@ __CPRAGMA_ONCE
 
 #elif defined(__MINGW32__)
 
+#elif defined(_MSC_VER)
+
 #else
 #error unistd.h: unsupported compiler
 #endif
@@ -154,7 +156,9 @@ __BEGIN_DECLS
 #define O_ACCMODE       (O_RDONLY|O_WRONLY|O_RDWR)
 #endif
 
+#if 0
 #define O_NDELAY        0
+#endif //if 0
 
 
 /* <stat.h> */

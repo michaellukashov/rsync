@@ -54,6 +54,8 @@ __CPRAGMA_ONCE
 
 #elif defined(__MINGW32__)
 
+#elif defined(_MSC_VER)
+
 #else
 #error utypes.h: Unknown compiler
 #endif

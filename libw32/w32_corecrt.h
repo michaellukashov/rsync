@@ -154,6 +154,9 @@ typedef __time64_t time_t;
 #endif
 #endif
 
+#if 0
+#undef _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES
+#ifndef __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0
 #if defined(__cplusplus) && _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES
 
 #define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(__ret,__func,__dsttype,__dst) \
@@ -276,6 +279,7 @@ typedef __time64_t time_t;
 #define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_SPLITPATH(__ret,__func,__dsttype,__src)
 
 #endif
+#endif //__DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0
 
 #define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_0(__ret_type, __ret_policy, __decl_spec, __name, __dst_attr, __dst_type, __dst) \
     __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_0_EX(__ret_type, __ret_policy, __decl_spec, __func_name, __func_name##_s, __dst_attr, __dst_type, __dst)
@@ -429,6 +433,7 @@ typedef __time64_t time_t;
 #define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_4_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2, __arg3_type, __arg3, __arg4_type, __arg4)
 
 #endif
+#endif //if 0
 
 struct threadlocaleinfostruct;
 struct threadmbcinfostruct;
