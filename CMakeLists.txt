@@ -1,5 +1,5 @@
 project(rsync)
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.15)
 
 # use vcpkg scripts
 #
@@ -144,6 +144,17 @@ target_include_directories(popt_lib BEFORE PRIVATE
   ${CMAKE_BINARY_DIR}
 )
 
+set(ZLIB_COMPAT ON)
+set(ZLIB_FULL_VERSION 2.0.3)
+set(ZLIB_ENABLE_TESTS OFF)
+set(WITH_NEW_STRATEGIES ON)
+set(ZLIB_COMPAT ON)
+set(WITH_OPTIM ON)
+add_subdirectory(zlib-ng)
+get_target_property(ZLIB_INCLUDES zlibstatic INCLUDE_DIRECTORIES)
+#message("ZLIB_INCLUDES: ${ZLIB_INCLUDES}")
+target_include_directories(zlibstatic PUBLIC ${ZLIB_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR}/libw32)
+
 add_executable(rsync
   version.h
   ifuncs.h
@@ -216,6 +227,7 @@ target_include_directories(rsync BEFORE PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
   popt
+  zlib-ng
 )
 
 target_compile_definitions(rsync PRIVATE
@@ -230,4 +242,5 @@ set_target_properties(rsync PROPERTIES
 target_link_libraries(rsync
   rsync_lib
   popt_lib
+  zlibstatic
 )
