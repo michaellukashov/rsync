@@ -3,11 +3,14 @@
 
 /* This has to be first include that defines any types */
 #if defined(_MSC_VER)
+#ifndef _SSIZE_T_DEFINED
+#define _SSIZE_T_DEFINED
 #  if defined(_WIN64)
     typedef __int64 ssize_t;
 #  else
     typedef long ssize_t;
 #  endif
+#endif
 #endif
 
 #if defined(ZLIB_COMPAT)
