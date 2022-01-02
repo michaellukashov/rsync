@@ -246,7 +246,7 @@ int do_chmod(const char *path, mode_t mode)
 		code = 1;
 # endif
 	} else
-		code = chmod(path, mode & CHMOD_BITS); /* DISCOURAGED FUNCTION */
+		code = WIN32_CHMOD(path, mode & CHMOD_BITS); /* DISCOURAGED FUNCTION */
 #endif /* !HAVE_LCHMOD */
 	if (code != 0 && (preserve_perms || preserve_executability))
 		return code;
