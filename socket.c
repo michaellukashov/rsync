@@ -35,6 +35,7 @@
 #endif
 #include <netinet/tcp.h>
 
+#if 0
 #ifdef WIN32
 #ifndef WINVER
 #define WINVER 0x0501
@@ -47,8 +48,9 @@
 #include <ctype.h>
 #include <ws2tcpip.h>
 #include <errno.h>
-#include <win32_errno.h>
 #endif
+#endif //if 0
+#include <win32_errno.h>
 #include <sys/signal.h>
 
 extern char *bind_address;
