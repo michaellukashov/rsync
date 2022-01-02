@@ -114,7 +114,7 @@ Z_INTERNAL block_state deflate_slow         (deflate_state *s, int flush);
 static block_state deflate_rle   (deflate_state *s, int flush);
 static block_state deflate_huff  (deflate_state *s, int flush);
 static void lm_init              (deflate_state *s);
-Z_INTERNAL unsigned read_buf  (PREFIX3(stream) *strm, unsigned char *buf, unsigned size);
+Z_INTERNAL unsigned z_read_buf  (PREFIX3(stream) *strm, unsigned char *buf, unsigned size);
 
 extern void crc_reset(deflate_state *const s);
 #ifdef X86_PCLMULQDQ_CRC
@@ -434,7 +434,7 @@ int32_t Z_EXPORT PREFIX(deflateSetDictionary)(PREFIX3(stream) *strm, const uint8
     if (wrap == 1)
         strm->adler = functable.adler32(strm->adler, dictionary, dictLength);
     DEFLATE_SET_DICTIONARY_HOOK(strm, dictionary, dictLength);  /* hook for IBM Z DFLTCC */
-    s->wrap = 0;                    /* avoid computing Adler-32 in read_buf */
+    s->wrap = 0;                    /* avoid computing Adler-32 in z_read_buf */
 
     /* if dictionary would fill window, just replace the history */
     if (dictLength >= s->w_size) {
@@ -729,7 +729,7 @@ unsigned long Z_EXPORT PREFIX(deflateBound)(PREFIX3(stream) *strm, unsigned long
  * Flush as much pending output as possible. All deflate() output, except for
  * some deflate_stored() output, goes through this function so some
  * applications may wish to modify it to avoid allocating a large
- * strm->next_out buffer and copying into it. (See also read_buf()).
+ * strm->next_out buffer and copying into it. (See also z_read_buf()).
  */
 Z_INTERNAL void flush_pending(PREFIX3(stream) *strm) {
     uint32_t len;
@@ -1137,7 +1137,7 @@ int32_t Z_EXPORT PREFIX(deflateCopy)(PREFIX3(stream) *dest, PREFIX3(stream) *sou
  * allocating a large strm->next_in buffer and copying from it.
  * (See also flush_pending()).
  */
-Z_INTERNAL unsigned read_buf(PREFIX3(stream) *strm, unsigned char *buf, unsigned size) {
+Z_INTERNAL unsigned z_read_buf(PREFIX3(stream) *strm, unsigned char *buf, unsigned size) {
     uint32_t len = strm->avail_in;
 
     if (len > size)
@@ -1281,7 +1281,7 @@ void Z_INTERNAL fill_window(deflate_state *s) {
          */
         Assert(more >= 2, "more < 2");
 
-        n = read_buf(s->strm, s->window + s->strstart + s->lookahead, more);
+        n = z_read_buf(s->strm, s->window + s->strstart + s->lookahead, more);
         s->lookahead += n;
 
         /* Initialize the hash value now that we have some input: */
@@ -1440,7 +1440,7 @@ static block_state deflate_stored(deflate_state *s, int flush) {
          * the check value.
          */
         if (len) {
-            read_buf(s->strm, s->strm->next_out, len);
+            z_read_buf(s->strm, s->strm->next_out, len);
             s->strm->next_out += len;
             s->strm->avail_out -= len;
             s->strm->total_out += len;
@@ -1506,7 +1506,7 @@ static block_state deflate_stored(deflate_state *s, int flush) {
     if (have > s->strm->avail_in)
         have = s->strm->avail_in;
     if (have) {
-        read_buf(s->strm, s->window + s->strstart, have);
+        z_read_buf(s->strm, s->window + s->strstart, have);
         s->strstart += have;
         s->insert += MIN(have, s->w_size - s->insert);
     }
