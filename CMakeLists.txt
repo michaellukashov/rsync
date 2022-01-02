@@ -104,17 +104,17 @@ add_library(rsync_lib OBJECT
   lib/addrinfo.h
   lib/permstring.h
   lib/wildmatch.h
-  lib/pool_alloc.c
-  lib/compat.c
-  lib/sysacls.c
-  lib/md5.c
-  lib/mdfour.c
-  lib/snprintf.c
-  lib/permstring.c
-  lib/sysxattrs.c
-  lib/getpass.c
-  lib/getaddrinfo.c
   lib/wildmatch.c
+  lib/compat.c
+  lib/snprintf.c
+  lib/mdfour.c
+  lib/md5.c
+  lib/permstring.c
+  lib/pool_alloc.c
+  lib/sysacls.c
+  lib/sysxattrs.c
+#  lib/getpass.c
+#  lib/getaddrinfo.c
   lib/inet_ntop.c
   lib/inet_pton.c
 )
@@ -136,11 +136,11 @@ add_library(popt_lib OBJECT
   popt/popt.h
   popt/poptint.h
   popt/findme.h
+  popt/findme.c
   popt/popt.c
+  popt/poptconfig.c
   popt/popthelp.c
   popt/poptparse.c
-  popt/poptconfig.c
-  popt/findme.c
 )
 
 target_include_directories(popt_lib BEFORE PRIVATE
@@ -199,11 +199,11 @@ add_library(libw32_lib OBJECT
   libw32/w32_mmap.c
 #  libw32/w32_mkstemp.c
 #  libw32/w32_mknod.c
-#  libw32/w32_link.c
+  libw32/w32_link.c
 #  libw32/w32_langinfo.c
 #  libw32/w32_lang.c
 #  libw32/w32_io.c
-#  libw32/w32_ino.c
+  libw32/w32_ino.c
 #  libw32/w32_iconv_native.c
 #  libw32/w32_iconv.c
   libw32/w32_grp.c
@@ -244,55 +244,62 @@ set(WITH_OPTIM ON)
 add_subdirectory(zlib-ng)
 
 add_executable(rsync
-  version.h
-  ifuncs.h
-  rsync.h
-  itypes.h
   byteorder.h
+  config.h
+  errcode.h
+  proto.h
+  rsync.h
+  ifuncs.h
+  itypes.h
+  inums.h
+  version.h
   case_N.h
   latest-year.h
-  errcode.h
-  inums.h
   io.h
-  util2.c
-  options.c
-  exclude.c
-  usage.c
-  clientserver.c
-  log.c
-  syscall.c
-  main.c
-  util.c
+
   flist.c
+  rsync.c
+  generator.c
+  receiver.c
+  cleanup.c
+  sender.c
+  exclude.c
+  util.c
+  util2.c
+  main.c
+  checksum.c
+  match.c
+  syscall.c
+  log.c
+  backup.c
+  delete.c
+
+  options.c
   io.c
   compat.c
-  generator.c
-  rsync.c
-  checksum.c
-  uidlist.c
-  cleanup.c
-  xattrs.c
-  access.c
-  loadparm.c
-  clientname.c
-  authenticate.c
-  acls.c
-  fileio.c
-  hashtable.c
   hlink.c
-  match.c
-  params.c
-  sender.c
-  socket.c
-  delete.c
-  pipe.c
-  progress.c
-  receiver.c
-  backup.c
-  chmod.c
-  connection.c
-  batch.c
   token.c
+  uidlist.c
+  socket.c
+  hashtable.c
+  fileio.c
+  batch.c
+  clientname.c
+  chmod.c
+  acls.c
+  xattrs.c
+
+  progress.c
+  pipe.c
+
+  params.c
+  loadparm.c
+  clientserver.c
+  access.c
+  connection.c
+  authenticate.c
+
+  usage.c
 #  t_stub.c
 #  rounding.c
 #  trimslash.c
