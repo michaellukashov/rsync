@@ -79,6 +79,7 @@ set(HAVE_MODE_T 1)
 set(HAVE_SIZE_T 1)
 set(HAVE_UINT32_T 1)
 set(HAVE_ID_T 1)
+set(HAVE_STRPBRK 1)
 
 set(RSYNC_PATH "\"rsync\"")
 set(RSYNC_RSH "\"ssh\"")
