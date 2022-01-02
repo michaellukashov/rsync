@@ -151,9 +151,9 @@ set(WITH_NEW_STRATEGIES ON)
 set(ZLIB_COMPAT ON)
 set(WITH_OPTIM ON)
 add_subdirectory(zlib-ng)
-get_target_property(ZLIB_INCLUDES zlibstatic INCLUDE_DIRECTORIES)
+#get_target_property(ZLIB_INCLUDES zlibstatic INCLUDE_DIRECTORIES)
 #message("ZLIB_INCLUDES: ${ZLIB_INCLUDES}")
-target_include_directories(zlibstatic PUBLIC ${ZLIB_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR}/libw32)
+#target_include_directories(zlibstatic PUBLIC ${ZLIB_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR}/libw32)
 
 add_executable(rsync
   version.h
