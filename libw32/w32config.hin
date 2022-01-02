@@ -778,5 +778,3 @@ __CPRAGMA_ONCE
 
 
 #endif  /*WIN32_CONFIG_H_INCLUDED*/
-
-
