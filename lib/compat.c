@@ -22,6 +22,8 @@
 #include "rsync.h"
 #include "itypes.h"
 
+#define kill(__pid, __val) w32_kill(__pid, __val)
+
 static char number_separator;
 
 char get_number_separator(void)
