@@ -24,6 +24,7 @@
 #include "ifuncs.h"
 #include "itypes.h"
 #include "inums.h"
+#include <stdlib.h>
 #include <sys/socket.h>
 
 extern int dry_run;
@@ -82,7 +83,7 @@ int fd_pair(int fd[2])
 	int ret;
 
 #ifdef HAVE_SOCKETPAIR
-    ret = w32_socketpair_fd(AF_UNIX, SOCK_STREAM, 0, fd);
+	ret = w32_socketpair_fd(AF_UNIX, SOCK_STREAM, 0, fd);
 #else
 	ret = pipe(fd);
 #endif
