@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.15)
 # use vcpkg scripts
 #
 
+include(cmake/ucm.cmake)
 include(cmake/CheckTypeExists.cmake)
 include(CheckTypeSize)
 include(CheckIncludeFile)
@@ -245,3 +246,6 @@ target_link_libraries(rsync
   popt_lib
   zlibstatic
 )
+
+ucm_set_runtime(STATIC)
+#ucm_print_flags()
