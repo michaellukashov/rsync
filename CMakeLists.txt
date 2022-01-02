@@ -81,6 +81,10 @@ set(HAVE_SIZE_T 1)
 set(HAVE_UINT32_T 1)
 set(HAVE_ID_T 1)
 set(HAVE_STRPBRK 1)
+set(HAVE_MEMMOVE 1)
+set(HAVE_STRCHR 1)
+set(HAVE_GETCWD 1)
+set(HAVE_WAITPID 1)
 
 set(RSYNC_PATH "\"rsync\"")
 set(RSYNC_RSH "\"ssh\"")
@@ -88,6 +92,7 @@ set(NOBODY_GROUP "\"nobody\"")
 set(NOBODY_USER "\"nobody\"")
 set(RSYNCD_SYSCONF "\"/etc/rsyncd.conf\"")
 
+#add_definitions(-DWIN32_UNISTD_MAP)
 configure_file(config.h.cmake.in config.h)
 
 add_library(rsync_lib OBJECT
@@ -146,6 +151,90 @@ target_include_directories(popt_lib BEFORE PRIVATE
   ${CMAKE_BINARY_DIR}
 )
 
+set(IS_LITTLE_ENDIAN 1)
+set(STDC_HEADERS 1)
+set(HAVE_EIGHTBIT 1)
+set(HAVE_BCMP 1)
+set(HAVE_BZERO 1)
+set(HAVE_SYSERRLIST 1)
+set(HAVE_SYS_SOCKET_H 1)
+set(HAVE_STRLCPY 1)
+
+configure_file(libw32/w32config.hin w32config.h)
+
+add_library(libw32_lib OBJECT
+  libw32/w32_getlocale.c
+  libw32/w32_realpath.c
+  libw32/w32_write.c
+  libw32/w32_util.c
+  libw32/w32_user.c
+  libw32/w32_unlink.c
+  libw32/w32_uname.c
+  libw32/w32_truncate.c
+  libw32/w32_time.c
+  libw32/w32_sysdir.c
+  libw32/w32_strtoull.c
+  libw32/w32_strtoll.c
+#  libw32/w32_strlcpy.c
+#  libw32/w32_strlcat.c
+  libw32/w32_string.c
+  libw32/w32_strftime.c
+  libw32/w32_statfs.c
+  libw32/w32_sockpair.c
+  libw32/w32_sockfd.c
+  libw32/w32_socket2.c
+  libw32/w32_socket.c
+  libw32/w32_sockbase.c
+#  libw32/w32_slang.c
+  libw32/w32_signal.c
+#  libw32/w32_shell.c
+  libw32/w32_select.c
+  libw32/w32_reparse.c
+  libw32/w32_read.c
+  libw32/w32_pwd.c
+  libw32/w32_progname.c
+#  libw32/w32_popen.c
+  libw32/w32_poll.c
+  libw32/w32_neterr.c
+  libw32/w32_mmap.c
+#  libw32/w32_mkstemp.c
+#  libw32/w32_mknod.c
+#  libw32/w32_link.c
+#  libw32/w32_langinfo.c
+#  libw32/w32_lang.c
+#  libw32/w32_io.c
+#  libw32/w32_ino.c
+#  libw32/w32_iconv_native.c
+#  libw32/w32_iconv.c
+  libw32/w32_grp.c
+  libw32/w32_gistrerror.c
+  libw32/w32_getsubopt.c
+  libw32/w32_getopt.c
+  libw32/w32_gethostname.c
+  libw32/w32_getcwd.c
+  libw32/w32_fsync.c
+  libw32/w32_fcntl.c
+  libw32/w32_errno.c
+  libw32/w32_dirent.c
+  libw32/w32_dir.c
+#  libw32/w32_close.c
+  libw32/w32_chown.c
+  libw32/w32_child.c
+#  libw32/w32_check.c
+#  libw32/termemu_vio.c
+  libw32/w32_trace.c
+  libw32/bsd_bsearch.c
+  libw32/bsd_qsort.c
+)
+
+target_include_directories(libw32_lib BEFORE PRIVATE
+#  lib
+#  libw32/msvc
+  libw32
+#  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_BINARY_DIR}
+)
+
 set(ZLIB_COMPAT ON)
 set(ZLIB_FULL_VERSION 2.0.3)
 set(ZLIB_ENABLE_TESTS OFF)
@@ -153,9 +242,6 @@ set(WITH_NEW_STRATEGIES ON)
 set(ZLIB_COMPAT ON)
 set(WITH_OPTIM ON)
 add_subdirectory(zlib-ng)
-#get_target_property(ZLIB_INCLUDES zlibstatic INCLUDE_DIRECTORIES)
-#message("ZLIB_INCLUDES: ${ZLIB_INCLUDES}")
-#target_include_directories(zlibstatic PUBLIC ${ZLIB_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR}/libw32)
 
 add_executable(rsync
   version.h
@@ -220,6 +306,7 @@ add_executable(rsync
 
 add_custom_target(rsync_sources SOURCES
   config.h.cmake.in
+  libw32/w32config.hin
 )
 
 target_include_directories(rsync BEFORE PRIVATE
@@ -244,6 +331,7 @@ set_target_properties(rsync PROPERTIES
 target_link_libraries(rsync
   rsync_lib
   popt_lib
+  libw32_lib
   zlibstatic
 )
 
