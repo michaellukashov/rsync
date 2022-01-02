@@ -337,3 +337,7 @@ target_link_libraries(rsync
 
 ucm_set_runtime(STATIC)
 #ucm_print_flags()
+ucm_add_linker_flags(EXE
+  /NODEFAULTLIB:msvcrtd.lib
+#  /NODEFAULTLIB:libucrtd.lib
+)
