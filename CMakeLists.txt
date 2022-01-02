@@ -202,7 +202,7 @@ add_library(libw32_lib OBJECT
   libw32/w32_link.c
 #  libw32/w32_langinfo.c
 #  libw32/w32_lang.c
-#  libw32/w32_io.c
+  libw32/w32_io.c
   libw32/w32_ino.c
 #  libw32/w32_iconv_native.c
 #  libw32/w32_iconv.c
