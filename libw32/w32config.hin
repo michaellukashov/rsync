@@ -41,8 +41,8 @@ __CPRAGMA_ONCE
 #endif
 #endif /*MSC || WATCOM*/
 
-#undef MAKELIB_CC_COMPILER
-#undef MAKELIB_CC_VERSION
+#cmakedefine MAKELIB_CC_COMPILER @MAKELIB_CC_COMPILER@
+#cmakedefine MAKELIB_CC_VERSION @MAKELIB_CC_VERSION@
 
 #if defined(_MSC_VER) && !defined(__WATCOMC__)
 #pragma warning (disable : 4127)                // conditional expression is constant
@@ -68,25 +68,25 @@ __CPRAGMA_ONCE
  *  Define for mouse (in xterm) capability or if your environment
  *  supports mouse controls (may not work)
  */
-#undef HAVE_MOUSE
-#undef HAVE_LIBGPM
-#undef HAVE_GPM_H
+#cmakedefine HAVE_MOUSE @HAVE_MOUSE@
+#cmakedefine HAVE_LIBGPM @HAVE_LIBGPM@
+#cmakedefine HAVE_GPM_H @HAVE_GPM_H@
 
 /*
  *  Works around a DEC/xterm bug with CR (not needed with later xterms)
  */
-#undef LINEFEED_DOES_CR
+#cmakedefine LINEFEED_DOES_CR @LINEFEED_DOES_CR@
 
 /*
  *  If defined, disables floating point macros and makes
  *  GRIEF smaller in statically linked executables
  */
-#undef NO_FLOAT_MATH
+#cmakedefine NO_FLOAT_MATH @NO_FLOAT_MATH@
 
 /*
  *  Define for 8-bit capable displays
  */
-#undef HAVE_EIGHTBIT
+#cmakedefine HAVE_EIGHTBIT @HAVE_EIGHTBIT@
 
 
 /*
@@ -98,105 +98,125 @@ __CPRAGMA_ONCE
  *  Compiler
  */
 
-#undef GCC_SCANF
-#undef GCC_SCANFLIKE
-#undef GCC_PRINTF
-#undef GCC_PRINTFLIKE
-#undef GCC_UNUSED
-#undef GCC_NORETURN
+#cmakedefine GCC_SCANF @GCC_SCANF@
+#cmakedefine GCC_SCANFLIKE @GCC_SCANFLIKE@
+#cmakedefine GCC_PRINTF @GCC_PRINTF@
+#cmakedefine GCC_PRINTFLIKE @GCC_PRINTFLIKE@
+#cmakedefine GCC_UNUSED @GCC_UNUSED@
+#cmakedefine GCC_NORETURN @GCC_NORETURN@
 
 /*
  *  System headers
  */
 
 /* AC_HEADER_STDC */
-#undef STDC_HEADERS
-#undef HAVE_STDARG_H
-#undef HAVE_STDLIB_H
-#undef HAVE_STDIO_H
-#undef HAVE_LIMITS_H
+#cmakedefine STDC_HEADERS @STDC_HEADERS@
+#cmakedefine HAVE_STDARG_H @HAVE_STDARG_H@
+#cmakedefine HAVE_STDLIB_H @HAVE_STDLIB_H@
+#cmakedefine HAVE_STDIO_H @HAVE_STDIO_H@
+#cmakedefine HAVE_LIMITS_H @HAVE_LIMITS_H@
 
 /* AC_HEADER_DIRENT */
-#undef HAVE_DIRENT_H
-#undef HAVE_DIRECT_H
-#undef HAVE_SYS_NDIR_H
-#undef HAVE_SYS_DIR_H
-#undef HAVE_NDIR_H
+#cmakedefine HAVE_DIRENT_H @HAVE_DIRENT_H@
+#cmakedefine HAVE_DIRECT_H @HAVE_DIRECT_H@
+#cmakedefine HAVE_SYS_NDIR_H @HAVE_SYS_NDIR_H@
+#cmakedefine HAVE_SYS_DIR_H @HAVE_SYS_DIR_H@
+#cmakedefine HAVE_NDIR_H @HAVE_NDIR_H@
 
 /* AC_HEADER_TIME */
-#undef HAVE_TIME_H
-#undef TIME_WITH_SYS_TIME
-#undef HAVE_SYS_TIME_H
-#undef HAVE_UTIME_H
-#undef HAVE_SYS_UTIME_H
+#cmakedefine HAVE_TIME_H @HAVE_TIME_H@
+#cmakedefine TIME_WITH_SYS_TIME @TIME_WITH_SYS_TIME@
+#cmakedefine HAVE_SYS_TIME_H @HAVE_SYS_TIME_H@
+#cmakedefine HAVE_UTIME_H @HAVE_UTIME_H@
+#cmakedefine HAVE_SYS_UTIME_H @HAVE_SYS_UTIME_H@
 
 /* Window32 */
-#undef HAVE_WINDOWS_H
-#undef HAVE_WINSOCK2_H
-#undef HAVE_WINCRYPT_H
-#undef HAVE_WINIOCTL_H
-#undef HAVE_BCRYPT_H
+#cmakedefine HAVE_WINDOWS_H @HAVE_WINDOWS_H@
+#cmakedefine HAVE_WINSOCK2_H @HAVE_WINSOCK2_H@
+#cmakedefine HAVE_WINCRYPT_H @HAVE_WINCRYPT_H@
+#cmakedefine HAVE_WINIOCTL_H @HAVE_WINIOCTL_H@
+#cmakedefine HAVE_BCRYPT_H @HAVE_BCRYPT_H@
 
 /* Explicit header checks */
-#undef HAVE_SYS_TYPES_H
-#undef HAVE_SYS_AT_ANSI_H
-#undef HAVE_SYS_BSDTYPES_H
-#undef HAVE_SYS_IOCTL_COMPAT_H
-#undef HAVE_SYS_IOCTL_H
-#undef HAVE_SYS_KD_H
-#undef HAVE_SYS_PARAM_H
-#undef HAVE_SYS_CDEFS_H
-#undef HAVE_SYS_PTEM_H
-#undef HAVE_SYS_UTSNAME_H
-#undef HAVE_SYS_SELECT_H
-#undef HAVE_SYS_SOCKET_H
-#undef HAVE_SYS_WAIT_H
-#undef HAVE_SYS_STAT_H
-#undef HAVE_SYS_STATFS_H
-#undef HAVE_SYS_STATVFS_H
-#undef HAVE_SYS_VFS_H
-#undef HAVE_SYS_MMAN_H
-#undef HAVE_WAIT_H
-#undef HAVE_POLL_H
-#undef HAVE_SYS_PRCTL_H
-#undef HAVE_SYS_MOUNT_H
+#cmakedefine HAVE_SYS_TYPES_H @HAVE_SYS_TYPES_H@
+#cmakedefine HAVE_SYS_AT_ANSI_H @HAVE_SYS_AT_ANSI_H@
+#cmakedefine HAVE_SYS_BSDTYPES_H @HAVE_SYS_BSDTYPES_H@
+#cmakedefine HAVE_SYS_IOCTL_COMPAT_H @HAVE_SYS_IOCTL_COMPAT_H@
+#cmakedefine HAVE_SYS_IOCTL_H @HAVE_SYS_IOCTL_H@
+#cmakedefine HAVE_SYS_KD_H @HAVE_SYS_KD_H@
+#cmakedefine HAVE_SYS_PARAM_H @HAVE_SYS_PARAM_H@
+#cmakedefine HAVE_SYS_CDEFS_H @HAVE_SYS_CDEFS_H@
+#cmakedefine HAVE_SYS_PTEM_H @HAVE_SYS_PTEM_H@
+#cmakedefine HAVE_SYS_UTSNAME_H @HAVE_SYS_UTSNAME_H@
+#cmakedefine HAVE_SYS_SELECT_H @HAVE_SYS_SELECT_H@
+#cmakedefine HAVE_SYS_SOCKET_H @HAVE_SYS_SOCKET_H@
+#cmakedefine HAVE_SYS_WAIT_H @HAVE_SYS_WAIT_H@
+#cmakedefine HAVE_SYS_STAT_H @HAVE_SYS_STAT_H@
+#cmakedefine HAVE_SYS_STATFS_H @HAVE_SYS_STATFS_H@
+#cmakedefine HAVE_SYS_STATVFS_H @HAVE_SYS_STATVFS_H@
+#cmakedefine HAVE_SYS_VFS_H @HAVE_SYS_VFS_H@
+#cmakedefine HAVE_SYS_MMAN_H @HAVE_SYS_MMAN_H@
+#cmakedefine HAVE_WAIT_H @HAVE_WAIT_H@
+#cmakedefine HAVE_POLL_H @HAVE_POLL_H@
+#cmakedefine HAVE_SYS_PRCTL_H @HAVE_SYS_PRCTL_H@
+#cmakedefine HAVE_SYS_MOUNT_H @HAVE_SYS_MOUNT_H@
 
-#undef HAVE_FENV_H
-#undef HAVE_FECLEAREXCEPT
+#cmakedefine HAVE_SYS_SOCKET_H @HAVE_SYS_SOCKET_H@
+#cmakedefine HAVE_SYS_WAIT_H @HAVE_SYS_WAIT_H@
+#cmakedefine HAVE_SYS_STAT_H @HAVE_SYS_STAT_H@
+#cmakedefine HAVE_SYS_STATFS_H @HAVE_SYS_STATFS_H@
+#cmakedefine HAVE_SYS_STATVFS_H @HAVE_SYS_STATVFS_H@
+#cmakedefine HAVE_SYS_VFS_H @HAVE_SYS_VFS_H@
+#cmakedefine HAVE_SYS_MMAN_H @HAVE_SYS_MMAN_H@
+#cmakedefine HAVE_WAIT_H @HAVE_WAIT_H@
+#cmakedefine HAVE_POLL_H @HAVE_POLL_H@
+#cmakedefine HAVE_SYS_PRCTL_H @HAVE_SYS_PRCTL_H@
+#cmakedefine HAVE_SYS_MOUNT_H @HAVE_SYS_MOUNT_H@
 
-#undef HAVE_FEATURES_H
-#undef HAVE_STDALIGN_H
-#undef HAVE_STDATOMIC_H
-#undef HAVE_THREADS_H
+#cmakedefine HAVE_FENV_H @HAVE_FENV_H@
+#cmakedefine HAVE_FECLEAREXCEPT @HAVE_FECLEAREXCEPT@
 
-#undef HAVE_THREAD_H
-#undef HAVE_PTHREAD_H
+#cmakedefine HAVE_FENV_H @HAVE_FENV_H@
+#cmakedefine HAVE_FECLEAREXCEPT @HAVE_FECLEAREXCEPT@
 
-#undef HAVE_FCNTL_H
-#undef HAVE_SHARE_H
-#undef HAVE_IO_H
+#cmakedefine HAVE_FEATURES_H @HAVE_FEATURES_H@
+#cmakedefine HAVE_STDALIGN_H @HAVE_STDALIGN_H@
+#cmakedefine HAVE_STDATOMIC_H @HAVE_STDATOMIC_H@
+#cmakedefine HAVE_THREADS_H @HAVE_THREADS_H@
 
-#undef HAVE_CLANG_C_INDEX_H
-#undef HAVE_LIBCLANG
+#cmakedefine HAVE_FEATURES_H @HAVE_FEATURES_H@
+#cmakedefine HAVE_STDALIGN_H @HAVE_STDALIGN_H@
+#cmakedefine HAVE_STDATOMIC_H @HAVE_STDATOMIC_H@
+#cmakedefine HAVE_THREADS_H @HAVE_THREADS_H@
 
-#undef HAVE_LIBBFD
-#undef HAVE_BFD_H
-#undef HAVE_FLOAT_H
-#undef HAVE_ERRNO_H
-#undef HAVE_GETOPT_H
-#undef HAVE_STRUCT_OPTION
-#undef HAVE_MACHINE_CONSOLE_H
-#undef HAVE_MEMORY_H
-#undef HAVE_PROCESS_H
-#undef HAVE_PWD_H
-#undef HAVE_SIGNAL_H
-#undef HAVE_STRINGS_H
-#undef HAVE_STRING_H
-#undef HAVE_UNISTD_H
+#cmakedefine HAVE_THREAD_H @HAVE_THREAD_H@
+#cmakedefine HAVE_PTHREAD_H @HAVE_PTHREAD_H@
 
-#undef HAVE_ARGZ_H
-#undef HAVE_LIBGEN_H
-#undef HAVE_REGEX_H
+#cmakedefine HAVE_FCNTL_H @HAVE_FCNTL_H@
+#cmakedefine HAVE_SHARE_H @HAVE_SHARE_H@
+#cmakedefine HAVE_IO_H @HAVE_IO_H@
+
+#cmakedefine HAVE_CLANG_C_INDEX_H @HAVE_CLANG_C_INDEX_H@
+#cmakedefine HAVE_LIBCLANG @HAVE_LIBCLANG@
+
+#cmakedefine HAVE_LIBBFD @HAVE_LIBBFD@
+#cmakedefine HAVE_BFD_H @HAVE_BFD_H@
+#cmakedefine HAVE_FLOAT_H @HAVE_FLOAT_H@
+#cmakedefine HAVE_ERRNO_H @HAVE_ERRNO_H@
+#cmakedefine HAVE_GETOPT_H @HAVE_GETOPT_H@
+#cmakedefine HAVE_STRUCT_OPTION @HAVE_STRUCT_OPTION@
+#cmakedefine HAVE_MACHINE_CONSOLE_H @HAVE_MACHINE_CONSOLE_H@
+#cmakedefine HAVE_MEMORY_H @HAVE_MEMORY_H@
+#cmakedefine HAVE_PROCESS_H @HAVE_PROCESS_H@
+#cmakedefine HAVE_PWD_H @HAVE_PWD_H@
+#cmakedefine HAVE_SIGNAL_H @HAVE_SIGNAL_H@
+#cmakedefine HAVE_STRINGS_H @HAVE_STRINGS_H@
+#cmakedefine HAVE_STRING_H @HAVE_STRING_H@
+#cmakedefine HAVE_UNISTD_H @HAVE_UNISTD_H@
+
+#cmakedefine HAVE_ARGZ_H @HAVE_ARGZ_H@
+#cmakedefine HAVE_LIBGEN_H @HAVE_LIBGEN_H@
+#cmakedefine HAVE_REGEX_H @HAVE_REGEX_H@
 #if defined(__WATCOMC__) && (__WATCOMC__ >= 1900)
 #define HAVE_ALLOCA_H                           /*intrinsic*/
 #else
@@ -206,12 +226,12 @@ __CPRAGMA_ONCE
 /*
  *  Available allocator functionality
  */
-#undef HAVE_LIBDLMALLOC
-#undef HAVE_LIBDBMALLOC
-#undef HAVE_LIBTCMALLOC
-#undef HAVE_LIBMALLOC
-#undef HAVE_MALLOC_STATS
-#undef HAVE_MALLOPT
+#cmakedefine HAVE_LIBDLMALLOC @HAVE_LIBDLMALLOC@
+#cmakedefine HAVE_LIBDBMALLOC @HAVE_LIBDBMALLOC@
+#cmakedefine HAVE_LIBTCMALLOC @HAVE_LIBTCMALLOC@
+#cmakedefine HAVE_LIBMALLOC @HAVE_LIBMALLOC@
+#cmakedefine HAVE_MALLOC_STATS @HAVE_MALLOC_STATS@
+#cmakedefine HAVE_MALLOPT @HAVE_MALLOPT@
 
 /*
  *  Available terminal functionality
@@ -223,48 +243,48 @@ __CPRAGMA_ONCE
  *          HAVE_LIB ncurses, curses, slang, termcap and termlib
  */
 
-#undef HAVE_TERMINFO
-#undef HAVE_TERMCAP
+#cmakedefine HAVE_TERMINFO @HAVE_TERMINFO@
+#cmakedefine HAVE_TERMCAP @HAVE_TERMCAP@
 
-#undef HAVE_OSPEED
-#undef OSPEED_EXTERN
-#undef HAVE_UP_BC_PC
-#undef UP_BC_PC_EXTERN
-#undef HAVE_OUTFUNTYPE
-#undef TPUTS_TAKES_CHAR
+#cmakedefine HAVE_OSPEED @HAVE_OSPEED@
+#cmakedefine OSPEED_EXTERN @OSPEED_EXTERN@
+#cmakedefine HAVE_UP_BC_PC @HAVE_UP_BC_PC@
+#cmakedefine UP_BC_PC_EXTERN @UP_BC_PC_EXTERN@
+#cmakedefine HAVE_OUTFUNTYPE @HAVE_OUTFUNTYPE@
+#cmakedefine TPUTS_TAKES_CHAR @TPUTS_TAKES_CHAR@
 
-#undef HAVE_LIBNCURSES
-#undef HAVE_LIBNCURSESW
-#undef HAVE_LIBTINFO
-#undef HAVE_LIBPDCURSES
-#undef HAVE_LIBCURSES
-#undef HAVE_LIBTERMCAP
-#undef HAVE_LIBTERMLIB
+#cmakedefine HAVE_LIBNCURSES @HAVE_LIBNCURSES@
+#cmakedefine HAVE_LIBNCURSESW @HAVE_LIBNCURSESW@
+#cmakedefine HAVE_LIBTINFO @HAVE_LIBTINFO@
+#cmakedefine HAVE_LIBPDCURSES @HAVE_LIBPDCURSES@
+#cmakedefine HAVE_LIBCURSES @HAVE_LIBCURSES@
+#cmakedefine HAVE_LIBTERMCAP @HAVE_LIBTERMCAP@
+#cmakedefine HAVE_LIBTERMLIB @HAVE_LIBTERMLIB@
 
 /* #undef HAVE_SLANG */
 /* #undef HAVE_SLANG_H */
 /* #undef HAVE_SLANG_SLANG_H */
 
-#undef HAVE_NCURSES_NCURSES_H
-#undef HAVE_NCURSES_CURSES_H
-#undef HAVE_NCURSES_H
+#cmakedefine HAVE_NCURSES_NCURSES_H @HAVE_NCURSES_NCURSES_H@
+#cmakedefine HAVE_NCURSES_CURSES_H @HAVE_NCURSES_CURSES_H@
+#cmakedefine HAVE_NCURSES_H @HAVE_NCURSES_H@
 
-#undef HAVE_NCURSESW_NCURSESW_H
-#undef HAVE_NCURSESW_CURSES_H
-#undef HAVE_NCURSESW_H
+#cmakedefine HAVE_NCURSESW_NCURSESW_H @HAVE_NCURSESW_NCURSESW_H@
+#cmakedefine HAVE_NCURSESW_CURSES_H @HAVE_NCURSESW_CURSES_H@
+#cmakedefine HAVE_NCURSESW_H @HAVE_NCURSESW_H@
 
-#undef HAVE_CURSES_H
+#cmakedefine HAVE_CURSES_H @HAVE_CURSES_H@
 
-#undef HAVE_TERMIOS_H
-#undef HAVE_TERMIO_H
-#undef HAVE_SGTTY_H
+#cmakedefine HAVE_TERMIOS_H @HAVE_TERMIOS_H@
+#cmakedefine HAVE_TERMIO_H @HAVE_TERMIO_H@
+#cmakedefine HAVE_SGTTY_H @HAVE_SGTTY_H@
 
-#undef HAVE_TERMLIB_H
+#cmakedefine HAVE_TERMLIB_H @HAVE_TERMLIB_H@
 
-#undef HAVE_TERMCAP_H
-#undef HAVE_TERM_H
+#cmakedefine HAVE_TERMCAP_H @HAVE_TERMCAP_H@
+#cmakedefine HAVE_TERM_H @HAVE_TERM_H@
 
-#undef HAVE_EDTERMCAP_H
+#cmakedefine HAVE_EDTERMCAP_H @HAVE_EDTERMCAP_H@
 
 /*
  *  Platform dependancies
@@ -287,69 +307,87 @@ __CPRAGMA_ONCE
 #undef SIZEOF_VOID_P 4
 #undef SIZEOF_WCHAR_T
 
-#undef HAVE_INLINE
-#undef HAVE___INLINE
+#cmakedefine SIZEOF_CHAR @SIZEOF_CHAR@
+#cmakedefine SIZEOF_SHORT @SIZEOF_SHORT@
+#cmakedefine SIZEOF_INT @SIZEOF_INT@
+#cmakedefine SIZEOF_FLOAT @SIZEOF_FLOAT@
+#cmakedefine SIZEOF_DOUBLE @SIZEOF_DOUBLE@
+#cmakedefine SIZEOF_LONG @SIZEOF_LONG@
+#cmakedefine SIZEOF_LONG_LONG @SIZEOF_LONG_LONG@
+#cmakedefine SIZEOF_VOID_P @SIZEOF_VOID_P@
+#cmakedefine SIZEOF_WCHAR_T @SIZEOF_WCHAR_T@
 
-#undef HAVE_DECL_SIZE_MAX
-#undef HAVE_DECL_SSIZE_MAX
-#undef HAVE_DECL_INT16_C
-#undef HAVE_DECL_INT16_MIN
-#undef HAVE_DECL_INT16_MAX
-#undef HAVE_DECL_UINT16_MAX
-#undef HAVE_DECL_INT32_C
-#undef HAVE_DECL_INT32_MIN
-#undef HAVE_DECL_INT32_MAX
-#undef HAVE_DECL_UINT32_MAX
-#undef HAVE_DECL_INT64_C
-#undef HAVE_DECL_INT64_MIN
-#undef HAVE_DECL_INT64_MAX
-#undef HAVE_DECL_UINT64_MAX
-#undef HAVE_DECL_INTPTR_MIN
-#undef HAVE_DECL_INTPTR_MAX
-#undef HAVE_DECL_UINTPTR_MAX
-#undef HAVE_DECL_WCHAR_MIN
-#undef HAVE_DECL_WCHAR_MAX
-#undef HAVE_DECL_INTMAX_MIN
-#undef HAVE_DECL_INTMAX_MAX
-#undef HAVE_DECL_UINTMAX_MAX
+#cmakedefine HAVE_INLINE @HAVE_INLINE@
+#cmakedefine HAVE___INLINE @HAVE___INLINE@
 
-#undef HAVE_INTMAX_T
-#undef HAVE_UINTMAX_T
-#undef HAVE_INTPTR_T
-#undef HAVE_UINTPTR_T
-#undef HAVE_LONG_LONG_INT
-#undef HAVE_UNSIGNED_LONG_LONG_INT
-#undef HAVE_INT8_T
-#undef HAVE_INT16_T
-#undef HAVE_INT32_T
-#undef HAVE_INT64_T
-#undef HAVE_UINT8_T
-#undef HAVE_UINT16_T
-#undef HAVE_UINT32_T
-#undef HAVE_UINT64_T
-#undef HAVE_UINT_FAST8_T
-#undef HAVE_UINT_FAST16_T
-#undef HAVE_UINT_FAST32_T
-#undef HAVE_UINT_FAST64_T
-#undef HAVE___INT64
-#undef HAVE___INT16
-#undef HAVE___INT32
-#undef HAVE___INT8
-#undef HAVE_WCHAR_T
-#undef HAVE_SSIZE_T
-#undef HAVE_C99BOOL
-#undef HAVE_BOOL
-#undef HAVE__BOOL
+#cmakedefine HAVE_DECL_SIZE_MAX @HAVE_DECL_SIZE_MAX@
+#cmakedefine HAVE_DECL_SSIZE_MAX @HAVE_DECL_SSIZE_MAX@
+#cmakedefine HAVE_DECL_INT16_C @HAVE_DECL_INT16_C@
+#cmakedefine HAVE_DECL_INT16_MIN @HAVE_DECL_INT16_MIN@
+#cmakedefine HAVE_DECL_INT16_MAX @HAVE_DECL_INT16_MAX@
+#cmakedefine HAVE_DECL_UINT16_MAX @HAVE_DECL_UINT16_MAX@
+#cmakedefine HAVE_DECL_INT32_C @HAVE_DECL_INT32_C@
+#cmakedefine HAVE_DECL_INT32_MIN @HAVE_DECL_INT32_MIN@
+#cmakedefine HAVE_DECL_INT32_MAX @HAVE_DECL_INT32_MAX@
+#cmakedefine HAVE_DECL_UINT32_MAX @HAVE_DECL_UINT32_MAX@
+#cmakedefine HAVE_DECL_INT64_C @HAVE_DECL_INT64_C@
+#cmakedefine HAVE_DECL_INT64_MIN @HAVE_DECL_INT64_MIN@
+#cmakedefine HAVE_DECL_INT64_MAX @HAVE_DECL_INT64_MAX@
+#cmakedefine HAVE_DECL_UINT64_MAX @HAVE_DECL_UINT64_MAX@
+#cmakedefine HAVE_DECL_INTPTR_MIN @HAVE_DECL_INTPTR_MIN@
+#cmakedefine HAVE_DECL_INTPTR_MAX @HAVE_DECL_INTPTR_MAX@
+#cmakedefine HAVE_DECL_UINTPTR_MAX @HAVE_DECL_UINTPTR_MAX@
+#cmakedefine HAVE_DECL_WCHAR_MIN @HAVE_DECL_WCHAR_MIN@
+#cmakedefine HAVE_DECL_WCHAR_MAX @HAVE_DECL_WCHAR_MAX@
+#cmakedefine HAVE_DECL_INTMAX_MIN @HAVE_DECL_INTMAX_MIN@
+#cmakedefine HAVE_DECL_INTMAX_MAX @HAVE_DECL_INTMAX_MAX@
+#cmakedefine HAVE_DECL_UINTMAX_MAX @HAVE_DECL_UINTMAX_MAX@
 
-#undef HAVE_ENDIAN_H
-#undef HAVE_MACHINE_ENDIAN_H
-#undef HAVE_ARPA_NAMESER_COMPAT_H
+#cmakedefine HAVE_INTMAX_T @HAVE_INTMAX_T@
+#cmakedefine HAVE_UINTMAX_T @HAVE_UINTMAX_T@
+#cmakedefine HAVE_INTPTR_T @HAVE_INTPTR_T@
+#cmakedefine HAVE_UINTPTR_T @HAVE_UINTPTR_T@
+#cmakedefine HAVE_LONG_LONG_INT @HAVE_LONG_LONG_INT@
+#cmakedefine HAVE_UNSIGNED_LONG_LONG_INT @HAVE_UNSIGNED_LONG_LONG_INT@
+#cmakedefine HAVE_INT8_T @HAVE_INT8_T@
+#cmakedefine HAVE_INT16_T @HAVE_INT16_T@
+#cmakedefine HAVE_INT32_T @HAVE_INT32_T@
+#cmakedefine HAVE_INT64_T @HAVE_INT64_T@
+#cmakedefine HAVE_UINT8_T @HAVE_UINT8_T@
+#cmakedefine HAVE_UINT16_T @HAVE_UINT16_T@
+#cmakedefine HAVE_UINT32_T @HAVE_UINT32_T@
+#cmakedefine HAVE_UINT64_T @HAVE_UINT64_T@
+#cmakedefine HAVE_UINT_FAST8_T @HAVE_UINT_FAST8_T@
+#cmakedefine HAVE_UINT_FAST16_T @HAVE_UINT_FAST16_T@
+#cmakedefine HAVE_UINT_FAST32_T @HAVE_UINT_FAST32_T@
+#cmakedefine HAVE_UINT_FAST64_T @HAVE_UINT_FAST64_T@
+#cmakedefine HAVE___INT64 @HAVE___INT64@
+#cmakedefine HAVE___INT16 @HAVE___INT16@
+#cmakedefine HAVE___INT32 @HAVE___INT32@
+#cmakedefine HAVE___INT8 @HAVE___INT8@
+#cmakedefine HAVE_WCHAR_T @HAVE_WCHAR_T@
+#cmakedefine HAVE_SSIZE_T @HAVE_SSIZE_T@
+#cmakedefine HAVE_C99BOOL @HAVE_C99BOOL@
+#cmakedefine HAVE_BOOL @HAVE_BOOL@
+#cmakedefine HAVE__BOOL @HAVE__BOOL@
+
+#cmakedefine HAVE_ENDIAN_H @HAVE_ENDIAN_H@
+#cmakedefine HAVE_MACHINE_ENDIAN_H @HAVE_MACHINE_ENDIAN_H@
+#cmakedefine HAVE_ARPA_NAMESER_COMPAT_H @HAVE_ARPA_NAMESER_COMPAT_H@
 
 #undef IS_BIG_ENDIAN
 #undef IS_LITTLE_ENDIAN
 #undef IS_UNKOWN_ENDIAN
 #undef IS_UNIVERSAL_BUILD
 #undef AC_APPLE_UNIVERSAL_BUILD
+
+#cmakedefine IS_LITTLE_ENDIAN @IS_LITTLE_ENDIAN@
+#cmakedefine STDC_HEADERS @STDC_HEADERS@
+#cmakedefine HAVE_EIGHTBIT @HAVE_EIGHTBIT@
+#cmakedefine HAVE_BCMP @HAVE_BCMP@
+#cmakedefine HAVE_BZERO @HAVE_BZERO@
+#cmakedefine HAVE_SYSERRLIST @HAVE_SYSERRLIST@
+
 #if !defined(IS_BIG_ENDIAN) && !defined(IS_LITTLE_ENDIAN)
 #       if defined(_M_IX86)
 #               define IS_LITTLE_ENDIAN 1
@@ -369,19 +407,19 @@ __CPRAGMA_ONCE
  *  System types
  */
 
-#undef HAVE_INTTYPES_H
-#undef HAVE_STDINT_H
-#undef HAVE_STDBOOL_H
-#undef HAVE_STDATOMIC_H
-#undef HAVE_THREADS_H
+#cmakedefine HAVE_INTTYPES_H @HAVE_INTTYPES_H@
+#cmakedefine HAVE_STDINT_H @HAVE_STDINT_H@
+#cmakedefine HAVE_STDBOOL_H @HAVE_STDBOOL_H@
+#cmakedefine HAVE_STDATOMIC_H @HAVE_STDATOMIC_H@
+#cmakedefine HAVE_THREADS_H @HAVE_THREADS_H@
 
-#undef mode_t
-#undef off_t
-#undef pid_t
-#undef size_t
-#undef uid_t
-#undef gid_t
-#undef id_t
+#cmakedefine mode_t @mode_t@
+#cmakedefine off_t @off_t@
+#cmakedefine pid_t @pid_t@
+#cmakedefine size_t @size_t@
+#cmakedefine uid_t @uid_t@
+#cmakedefine gid_t @gid_t@
+#cmakedefine id_t @id_t@
 
 
 /*
@@ -389,310 +427,310 @@ __CPRAGMA_ONCE
  */
 
         /* environ support */
-#undef HAVE_ENVIRON
-#undef HAVE__ENVIRON
-#undef HAVE___ENVIRON
-#undef NEED_EXTERN_ENVIRON
-#undef HAVE_ENV_H
-#undef HAVE_SETENV
-#undef HAVE_PUTENV
+#cmakedefine HAVE_ENVIRON @HAVE_ENVIRON@
+#cmakedefine HAVE__ENVIRON @HAVE__ENVIRON@
+#cmakedefine HAVE___ENVIRON @HAVE___ENVIRON@
+#cmakedefine NEED_EXTERN_ENVIRON @NEED_EXTERN_ENVIRON@
+#cmakedefine HAVE_ENV_H @HAVE_ENV_H@
+#cmakedefine HAVE_SETENV @HAVE_SETENV@
+#cmakedefine HAVE_PUTENV @HAVE_PUTENV@
 
         /* system library */
-#undef HAVE_BCMP
-#undef HAVE_BZERO
+#cmakedefine HAVE_BCMP @HAVE_BCMP@
+#cmakedefine HAVE_BZERO @HAVE_BZERO@
 
-#undef HAVE_MEMCMP
-#undef HAVE_MEMSET
-#undef HAVE_MEMMOVE
+#cmakedefine HAVE_MEMCMP @HAVE_MEMCMP@
+#cmakedefine HAVE_MEMSET @HAVE_MEMSET@
+#cmakedefine HAVE_MEMMOVE @HAVE_MEMMOVE@
 
-#undef HAVE_MATHERR
+#cmakedefine HAVE_MATHERR @HAVE_MATHERR@
 
-#undef HAVE_CHOWN
-#undef HAVE_CHROOT
-#undef HAVE_MKSTEMP
-#undef HAVE_SELECT
-#undef HAVE_POLL
-#undef HAVE_LINK
-#undef HAVE_LSTAT
-#undef HAVE_SYMLINK
-#undef HAVE_RENAME
+#cmakedefine HAVE_CHOWN @HAVE_CHOWN@
+#cmakedefine HAVE_CHROOT @HAVE_CHROOT@
+#cmakedefine HAVE_MKSTEMP @HAVE_MKSTEMP@
+#cmakedefine HAVE_SELECT @HAVE_SELECT@
+#cmakedefine HAVE_POLL @HAVE_POLL@
+#cmakedefine HAVE_LINK @HAVE_LINK@
+#cmakedefine HAVE_LSTAT @HAVE_LSTAT@
+#cmakedefine HAVE_SYMLINK @HAVE_SYMLINK@
+#cmakedefine HAVE_RENAME @HAVE_RENAME@
 
-#undef HAVE_FGETPOS
-#undef HAVE_FSETPOS
-#undef HAVE_TRUNCATE
-#undef HAVE_FTRUNCATE
-#undef HAVE_OPENDIR
-#undef HAVE_FINDFIRST
-#undef HAVE__FINDFIRST
+#cmakedefine HAVE_FGETPOS @HAVE_FGETPOS@
+#cmakedefine HAVE_FSETPOS @HAVE_FSETPOS@
+#cmakedefine HAVE_TRUNCATE @HAVE_TRUNCATE@
+#cmakedefine HAVE_FTRUNCATE @HAVE_FTRUNCATE@
+#cmakedefine HAVE_OPENDIR @HAVE_OPENDIR@
+#cmakedefine HAVE_FINDFIRST @HAVE_FINDFIRST@
+#cmakedefine HAVE__FINDFIRST @HAVE__FINDFIRST@
 
-#undef HAVE_GETOPT
-#undef HAVE_GETOPT_LONG
+#cmakedefine HAVE_GETOPT @HAVE_GETOPT@
+#cmakedefine HAVE_GETOPT_LONG @HAVE_GETOPT_LONG@
 
-#undef HAVE_INDEX
-#undef HAVE_RINDEX
-#undef HAVE_STRCASECMP
-#undef HAVE___STRCASECMP
-#undef HAVE_STRCHR
-#undef HAVE_STRERROR
-#undef HAVE_STRICMP
-#undef HAVE_STRRCHR
-#undef HAVE_STRDUP
-#undef HAVE_STRFTIME
-#undef HAVE_STRTOF
-#undef HAVE_STRTOLD
-#undef HAVE_STRTOLL
-#undef HAVE_STRTOUL
-#undef HAVE_STRVERSCMP
-#undef HAVE___STRVERSCMP
-#undef HAVE_STRNLEN
-#undef HAVE_STRLCAT
-#undef HAVE_STRLCPY
-#undef HAVE_STRSEP
-#undef HAVE_STRNSTR
-#undef HAVE_STRCASESTR
-#undef HAVE_STRCASESTR_L
-#undef HAVE_STRTONUM
+#cmakedefine HAVE_INDEX @HAVE_INDEX@
+#cmakedefine HAVE_RINDEX @HAVE_RINDEX@
+#cmakedefine HAVE_STRCASECMP @HAVE_STRCASECMP@
+#cmakedefine HAVE___STRCASECMP @HAVE___STRCASECMP@
+#cmakedefine HAVE_STRCHR @HAVE_STRCHR@
+#cmakedefine HAVE_STRERROR @HAVE_STRERROR@
+#cmakedefine HAVE_STRICMP @HAVE_STRICMP@
+#cmakedefine HAVE_STRRCHR @HAVE_STRRCHR@
+#cmakedefine HAVE_STRDUP @HAVE_STRDUP@
+#cmakedefine HAVE_STRFTIME @HAVE_STRFTIME@
+#cmakedefine HAVE_STRTOF @HAVE_STRTOF@
+#cmakedefine HAVE_STRTOLD @HAVE_STRTOLD@
+#cmakedefine HAVE_STRTOLL @HAVE_STRTOLL@
+#cmakedefine HAVE_STRTOUL @HAVE_STRTOUL@
+#cmakedefine HAVE_STRVERSCMP @HAVE_STRVERSCMP@
+#cmakedefine HAVE___STRVERSCMP @HAVE___STRVERSCMP@
+#cmakedefine HAVE_STRNLEN @HAVE_STRNLEN@
+#cmakedefine HAVE_STRLCAT @HAVE_STRLCAT@
+#cmakedefine HAVE_STRLCPY @HAVE_STRLCPY@
+#cmakedefine HAVE_STRSEP @HAVE_STRSEP@
+#cmakedefine HAVE_STRNSTR @HAVE_STRNSTR@
+#cmakedefine HAVE_STRCASESTR @HAVE_STRCASESTR@
+#cmakedefine HAVE_STRCASESTR_L @HAVE_STRCASESTR_L@
+#cmakedefine HAVE_STRTONUM @HAVE_STRTONUM@
 
-#undef HAVE_ISASCII
-#undef HAVE___ISASCII
-#undef HAVE_ISBLANK
-#undef HAVE___ISBLANK
-#undef HAVE_ISCSYM
-#undef HAVE___ISCSYM
+#cmakedefine HAVE_ISASCII @HAVE_ISASCII@
+#cmakedefine HAVE___ISASCII @HAVE___ISASCII@
+#cmakedefine HAVE_ISBLANK @HAVE_ISBLANK@
+#cmakedefine HAVE___ISBLANK @HAVE___ISBLANK@
+#cmakedefine HAVE_ISCSYM @HAVE_ISCSYM@
+#cmakedefine HAVE___ISCSYM @HAVE___ISCSYM@
 
-#undef HAVE_DECL_TZNAME
-#undef HAVE_GETLOGIN
-#undef HAVE_GETEXECNAME
+#cmakedefine HAVE_DECL_TZNAME @HAVE_DECL_TZNAME@
+#cmakedefine HAVE_GETLOGIN @HAVE_GETLOGIN@
+#cmakedefine HAVE_GETEXECNAME @HAVE_GETEXECNAME@
 
-#undef HAVE_MERGESORT
-#undef HAVE_VERSIONSORT
+#cmakedefine HAVE_MERGESORT @HAVE_MERGESORT@
+#cmakedefine HAVE_VERSIONSORT @HAVE_VERSIONSORT@
 
-#undef HAVE_MKTIME
-#undef HAVE_CTIME_R
-#undef HAVE_LOCALTIME_R
-#undef HAVE_GMTIME_R
-#undef HAVE_ASCTIME_R
+#cmakedefine HAVE_MKTIME @HAVE_MKTIME@
+#cmakedefine HAVE_CTIME_R @HAVE_CTIME_R@
+#cmakedefine HAVE_LOCALTIME_R @HAVE_LOCALTIME_R@
+#cmakedefine HAVE_GMTIME_R @HAVE_GMTIME_R@
+#cmakedefine HAVE_ASCTIME_R @HAVE_ASCTIME_R@
 
-#undef HAVE_SIGSETMASK
-#undef HAVE_SIGACTION
-#undef HAVE_SIGINTERRUPT
-#undef HAVE_STRSIGNAL
-#undef HAVE_PRCTL
+#cmakedefine HAVE_SIGSETMASK @HAVE_SIGSETMASK@
+#cmakedefine HAVE_SIGACTION @HAVE_SIGACTION@
+#cmakedefine HAVE_SIGINTERRUPT @HAVE_SIGINTERRUPT@
+#cmakedefine HAVE_STRSIGNAL @HAVE_STRSIGNAL@
+#cmakedefine HAVE_PRCTL @HAVE_PRCTL@
 
-#undef HAVE_SETPGID
-#undef HAVE_ISSETUGID
-#undef HAVE_SETPGRP
-#undef HAVE_SETSID
+#cmakedefine HAVE_SETPGID @HAVE_SETPGID@
+#cmakedefine HAVE_ISSETUGID @HAVE_ISSETUGID@
+#cmakedefine HAVE_SETPGRP @HAVE_SETPGRP@
+#cmakedefine HAVE_SETSID @HAVE_SETSID@
 
-#undef HAVE_WCHAR_H
-#undef HAVE_WCTYPE_H
-#undef HAVE_MBRTOWC
-#undef HAVE_WCRTOMB
-#undef HAVE_WCSCMP
-#undef HAVE_WCSCPY
-#undef HAVE_WCSLEN
-#undef HAVE_WCTOMB
-#undef HAVE_WMEMCMP
-#undef HAVE_WMEMMOVE
-#undef HAVE_WMEMCPY
+#cmakedefine HAVE_WCHAR_H @HAVE_WCHAR_H@
+#cmakedefine HAVE_WCTYPE_H @HAVE_WCTYPE_H@
+#cmakedefine HAVE_MBRTOWC @HAVE_MBRTOWC@
+#cmakedefine HAVE_WCRTOMB @HAVE_WCRTOMB@
+#cmakedefine HAVE_WCSCMP @HAVE_WCSCMP@
+#cmakedefine HAVE_WCSCPY @HAVE_WCSCPY@
+#cmakedefine HAVE_WCSLEN @HAVE_WCSLEN@
+#cmakedefine HAVE_WCTOMB @HAVE_WCTOMB@
+#cmakedefine HAVE_WMEMCMP @HAVE_WMEMCMP@
+#cmakedefine HAVE_WMEMMOVE @HAVE_WMEMMOVE@
+#cmakedefine HAVE_WMEMCPY @HAVE_WMEMCPY@
 
-#undef HAVE_MMAP
-#undef HAVE_MPROTECT
-#undef HAVE_MADVISE
-#undef HAVE_POSIX_MADVISE
-#undef HAVE_MREMAP
+#cmakedefine HAVE_MMAP @HAVE_MMAP@
+#cmakedefine HAVE_MPROTECT @HAVE_MPROTECT@
+#cmakedefine HAVE_MADVISE @HAVE_MADVISE@
+#cmakedefine HAVE_POSIX_MADVISE @HAVE_POSIX_MADVISE@
+#cmakedefine HAVE_MREMAP @HAVE_MREMAP@
 
-#undef HAVE_GETDELIM
-#undef HAVE_GETLINE
+#cmakedefine HAVE_GETDELIM @HAVE_GETDELIM@
+#cmakedefine HAVE_GETLINE @HAVE_GETLINE@
 
 
         /* statfs/statvfs and stat */
 #define HAVE_STRUCT_STAT_ST_DEV 1
 #define HAVE_STRUCT_STAT_ST_RDEV 1
-#undef HAVE_STRUCT_STAT_ST_BLOCKS
-#undef HAVE_STRUCT_STAT_ST_BLKSIZE
-#undef HAVE_STRUCT_STAT_ST_MTIME
+#cmakedefine HAVE_STRUCT_STAT_ST_BLOCKS @HAVE_STRUCT_STAT_ST_BLOCKS@
+#cmakedefine HAVE_STRUCT_STAT_ST_BLKSIZE @HAVE_STRUCT_STAT_ST_BLKSIZE@
+#cmakedefine HAVE_STRUCT_STAT_ST_MTIME @HAVE_STRUCT_STAT_ST_MTIME@
 #if defined(HAVE_SYS_STATFS_H) && (HAVE_SYS_STATFS_H)
 #define STAT_STATFS 1
 #define HAVE_STRUCT_STATFS_F_FSTYPENAME 1
 #endif
 #if defined(HAVE_SYS_STATVFS_H) && (HAVE_SYS_STATVFS_H)
 #define STAT_STATVFS 1
-#undef HAVE_STRUCT_STATVFS_F_BASETYPE
-#undef HAVE_STRUCT_STATVFS_F_FSTYPENAME
+#cmakedefine HAVE_STRUCT_STATVFS_F_BASETYPE @HAVE_STRUCT_STATVFS_F_BASETYPE@
+#cmakedefine HAVE_STRUCT_STATVFS_F_FSTYPENAME @HAVE_STRUCT_STATVFS_F_FSTYPENAME@
 #endif
 
-#undef CLOSEDIR_VOID
-#undef GETPGRP_VOID
+#cmakedefine CLOSEDIR_VOID @CLOSEDIR_VOID@
+#cmakedefine GETPGRP_VOID @GETPGRP_VOID@
 
-#undef HAVE_VPRINTF
+#cmakedefine HAVE_VPRINTF @HAVE_VPRINTF@
 #if defined(HAVE_VPRINTF) && (HAVE_VPRINTF)
-#undef HAVE_PRINTF
+#cmakedefine HAVE_PRINTF @HAVE_PRINTF@
 #endif
-#undef HAVE_DOPRNT
-#undef HAVE_SNPRINTF
-#undef HAVE__SNPRINTF
-#undef HAVE_VSNPRINTF
-#undef HAVE__VSNPRINTF
+#cmakedefine HAVE_DOPRNT @HAVE_DOPRNT@
+#cmakedefine HAVE_SNPRINTF @HAVE_SNPRINTF@
+#cmakedefine HAVE__SNPRINTF @HAVE__SNPRINTF@
+#cmakedefine HAVE_VSNPRINTF @HAVE_VSNPRINTF@
+#cmakedefine HAVE__VSNPRINTF @HAVE__VSNPRINTF@
 
-#undef HAVE_ALLOCA
-#undef HAVE__ALLOCA
-#undef HAVE_REALLOCARRAY
+#cmakedefine HAVE_ALLOCA @HAVE_ALLOCA@
+#cmakedefine HAVE__ALLOCA @HAVE__ALLOCA@
+#cmakedefine HAVE_REALLOCARRAY @HAVE_REALLOCARRAY@
 
-#undef HAVE_LOCALE_H
-#undef HAVE_SETLOCALE
-#undef HAVE_LANGINFO_CODESET
-#undef HAVE_LOCALE_CHARSET
+#cmakedefine HAVE_LOCALE_H @HAVE_LOCALE_H@
+#cmakedefine HAVE_SETLOCALE @HAVE_SETLOCALE@
+#cmakedefine HAVE_LANGINFO_CODESET @HAVE_LANGINFO_CODESET@
+#cmakedefine HAVE_LOCALE_CHARSET @HAVE_LOCALE_CHARSET@
 
-#undef HAVE_VFORK_H
-#undef HAVE_FORK
-#undef HAVE_VFORK
-#undef HAVE_WAITPID
-#undef HAVE_WAIT3
-#undef HAVE_WAIT4
-#undef HAVE_WORKING_FORK
-#undef HAVE_WORKING_VFORK
-#undef HAVE_SPAWN_H
-#undef HAVE_POSIX_SPAWN
-#undef HAVE_POSIX_SPAWNP
+#cmakedefine HAVE_VFORK_H @HAVE_VFORK_H@
+#cmakedefine HAVE_FORK @HAVE_FORK@
+#cmakedefine HAVE_VFORK @HAVE_VFORK@
+#cmakedefine HAVE_WAITPID @HAVE_WAITPID@
+#cmakedefine HAVE_WAIT3 @HAVE_WAIT3@
+#cmakedefine HAVE_WAIT4 @HAVE_WAIT4@
+#cmakedefine HAVE_WORKING_FORK @HAVE_WORKING_FORK@
+#cmakedefine HAVE_WORKING_VFORK @HAVE_WORKING_VFORK@
+#cmakedefine HAVE_SPAWN_H @HAVE_SPAWN_H@
+#cmakedefine HAVE_POSIX_SPAWN @HAVE_POSIX_SPAWN@
+#cmakedefine HAVE_POSIX_SPAWNP @HAVE_POSIX_SPAWNP@
 
-#undef HAVE_ROUND
-#undef HAVE_NEARBYINTF
+#cmakedefine HAVE_ROUND @HAVE_ROUND@
+#cmakedefine HAVE_NEARBYINTF @HAVE_NEARBYINTF@
 
         /* psuedo tty */
-#undef HAVE_PTY_H
-#undef HAVE_GRP_H
-#undef HAVE_STROPTS_H
-#undef HAVE_POSIX_OPENPT
-#undef HAVE_PTSNAME_R
-#undef HAVE_PTSNAME
-#undef HAVE_OPENPTY
-#undef HAVE_GETPT
-#undef HAVE_GRANTPT
-#undef HAVE_UNLOCKPT
+#cmakedefine HAVE_PTY_H @HAVE_PTY_H@
+#cmakedefine HAVE_GRP_H @HAVE_GRP_H@
+#cmakedefine HAVE_STROPTS_H @HAVE_STROPTS_H@
+#cmakedefine HAVE_POSIX_OPENPT @HAVE_POSIX_OPENPT@
+#cmakedefine HAVE_PTSNAME_R @HAVE_PTSNAME_R@
+#cmakedefine HAVE_PTSNAME @HAVE_PTSNAME@
+#cmakedefine HAVE_OPENPTY @HAVE_OPENPTY@
+#cmakedefine HAVE_GETPT @HAVE_GETPT@
+#cmakedefine HAVE_GRANTPT @HAVE_GRANTPT@
+#cmakedefine HAVE_UNLOCKPT @HAVE_UNLOCKPT@
 
         /* X11 */
-#undef HAVE_X11_EXTENSIONS_SHAPE_H
-#undef HAVE_X11_XFT_XFT_H
-#undef HAVE_X11_XKBLIB_H
-#undef HAVE_X11_XLIB_H
-#undef HAVE_XFT_XFT_H
-#undef HAVE_XKBBELL
-#undef HAVE_LIBX11
-#undef HAVE_LIBXFT
-#undef HAVE_LIBXEXT
+#cmakedefine HAVE_X11_EXTENSIONS_SHAPE_H @HAVE_X11_EXTENSIONS_SHAPE_H@
+#cmakedefine HAVE_X11_XFT_XFT_H @HAVE_X11_XFT_XFT_H@
+#cmakedefine HAVE_X11_XKBLIB_H @HAVE_X11_XKBLIB_H@
+#cmakedefine HAVE_X11_XLIB_H @HAVE_X11_XLIB_H@
+#cmakedefine HAVE_XFT_XFT_H @HAVE_XFT_XFT_H@
+#cmakedefine HAVE_XKBBELL @HAVE_XKBBELL@
+#cmakedefine HAVE_LIBX11 @HAVE_LIBX11@
+#cmakedefine HAVE_LIBXFT @HAVE_LIBXFT@
+#cmakedefine HAVE_LIBXEXT @HAVE_LIBXEXT@
 
         /* language support */
-#undef HAVE_LIBIBERTY
-#undef HAVE_LIBIBERTY_H
-#undef HAVE_DEMANGLE_H
-#undef HAVE_CPLUS_DEMANGLE
+#cmakedefine HAVE_LIBIBERTY @HAVE_LIBIBERTY@
+#cmakedefine HAVE_LIBIBERTY_H @HAVE_LIBIBERTY_H@
+#cmakedefine HAVE_DEMANGLE_H @HAVE_DEMANGLE_H@
+#cmakedefine HAVE_CPLUS_DEMANGLE @HAVE_CPLUS_DEMANGLE@
 
         /* display specials */
-#undef HAVE_SYSERRLIST
-#undef HAVE_EGAVGA
-#undef NO_PTY
+#cmakedefine HAVE_SYSERRLIST @HAVE_SYSERRLIST@
+#cmakedefine HAVE_EGAVGA @HAVE_EGAVGA@
+#cmakedefine NO_PTY @NO_PTY@
 
         /* filesystem characteristics
          *      filename != FILENAME
          *      AC_SYS_LONG_FILE_NAMES
          */
-#undef MIXEDCASE_FILENAMES
-#undef HAVE_LONG_FILE_NAMES
-#undef HAVE_SPAWN
+#cmakedefine MIXEDCASE_FILENAMES @MIXEDCASE_FILENAMES@
+#cmakedefine HAVE_LONG_FILE_NAMES @HAVE_LONG_FILE_NAMES@
+#cmakedefine HAVE_SPAWN @HAVE_SPAWN@
 
         /* shell support/
          *      libenchant
          *      libhunspell
          *      libaspell
          */
-#undef HAVE_LIBENCHANT
-#undef HAVE_ENCHANT_ENCHANT___H
-#undef HAVE_ENCHANT_ENCHANT_H
-#undef HAVE_ENCHANT___H
-#undef HAVE_ENCHANT_H
+#cmakedefine HAVE_LIBENCHANT @HAVE_LIBENCHANT@
+#cmakedefine HAVE_ENCHANT_ENCHANT___H @HAVE_ENCHANT_ENCHANT___H@
+#cmakedefine HAVE_ENCHANT_ENCHANT_H @HAVE_ENCHANT_ENCHANT_H@
+#cmakedefine HAVE_ENCHANT___H @HAVE_ENCHANT___H@
+#cmakedefine HAVE_ENCHANT_H @HAVE_ENCHANT_H@
 
-#undef HAVE_LIBHUNSPELL
-#undef HAVE_LIBHUNSPELL_DLL
-#undef HAVE_HUNSPELL_HUNSPELL_HXX
-#undef HAVE_HUNSPELL_HUNSPELL_H
-#undef HAVE_HUNSPELL_HXX
-#undef HAVE_HUNSPELL_H
+#cmakedefine HAVE_LIBHUNSPELL @HAVE_LIBHUNSPELL@
+#cmakedefine HAVE_LIBHUNSPELL_DLL @HAVE_LIBHUNSPELL_DLL@
+#cmakedefine HAVE_HUNSPELL_HUNSPELL_HXX @HAVE_HUNSPELL_HUNSPELL_HXX@
+#cmakedefine HAVE_HUNSPELL_HUNSPELL_H @HAVE_HUNSPELL_HUNSPELL_H@
+#cmakedefine HAVE_HUNSPELL_HXX @HAVE_HUNSPELL_HXX@
+#cmakedefine HAVE_HUNSPELL_H @HAVE_HUNSPELL_H@
 
-#undef HAVE_LIBASPELL
-#undef HAVE_ASPELL_ASPELL_H
-#undef HAVE_ASPELL_H
+#cmakedefine HAVE_LIBASPELL @HAVE_LIBASPELL@
+#cmakedefine HAVE_ASPELL_ASPELL_H @HAVE_ASPELL_ASPELL_H@
+#cmakedefine HAVE_ASPELL_H @HAVE_ASPELL_H@
 
         /* conversion support/
          *      ICU
          *      libapriconv
          *      libiconv/libcharset
          */
-#undef HAVE_LIBICU
-#undef HAVE_LIBAPRICU
-#undef HAVE_APRICONV_H
+#cmakedefine HAVE_LIBICU @HAVE_LIBICU@
+#cmakedefine HAVE_LIBAPRICU @HAVE_LIBAPRICU@
+#cmakedefine HAVE_APRICONV_H @HAVE_APRICONV_H@
 
-#undef HAVE_LIBICONV
-#undef GNUWIN32_LIBICONV
-#undef HAVE_ICONV_H
+#cmakedefine HAVE_LIBICONV @HAVE_LIBICONV@
+#cmakedefine GNUWIN32_LIBICONV @GNUWIN32_LIBICONV@
+#cmakedefine HAVE_ICONV_H @HAVE_ICONV_H@
 
-#undef HAVE_LIBINTL
-#undef GNUWIN32_LIBINTL
-#undef HAVE_LIBINTL_H
+#cmakedefine HAVE_LIBINTL @HAVE_LIBINTL@
+#cmakedefine GNUWIN32_LIBINTL @GNUWIN32_LIBINTL@
+#cmakedefine HAVE_LIBINTL_H @HAVE_LIBINTL_H@
 
-#undef HAVE_LIBCHARSET
-#undef GNUWIN32_LIBCHARSET
-#undef HAVE_LIBCHARSET_H
-#undef HAVE_LOCALCHARSET_H
+#cmakedefine HAVE_LIBCHARSET @HAVE_LIBCHARSET@
+#cmakedefine GNUWIN32_LIBCHARSET @GNUWIN32_LIBCHARSET@
+#cmakedefine HAVE_LIBCHARSET_H @HAVE_LIBCHARSET_H@
+#cmakedefine HAVE_LOCALCHARSET_H @HAVE_LOCALCHARSET_H@
 
-#undef HAVE_ICONVL_H
-#undef HAVE_LIBICONVL_DLL
-#undef HAVE_LIBCITRUS
+#cmakedefine HAVE_ICONVL_H @HAVE_ICONVL_H@
+#cmakedefine HAVE_LIBICONVL_DLL @HAVE_LIBICONVL_DLL@
+#cmakedefine HAVE_LIBCITRUS @HAVE_LIBCITRUS@
 
         /* compression */
-#undef HAVE_ZLIB_H
-#undef HAVE_LIBZ
+#cmakedefine HAVE_ZLIB_H @HAVE_ZLIB_H@
+#cmakedefine HAVE_LIBZ @HAVE_LIBZ@
 
-#undef HAVE_BZLIB_H
-#undef HAVE_LIBBZ2
+#cmakedefine HAVE_BZLIB_H @HAVE_BZLIB_H@
+#cmakedefine HAVE_LIBBZ2 @HAVE_LIBBZ2@
 
-#undef HAVE_LIBLZMA
-#undef HAVE_LZMA_H
+#cmakedefine HAVE_LIBLZMA @HAVE_LIBLZMA@
+#cmakedefine HAVE_LZMA_H @HAVE_LZMA_H@
 
         /* glib */
-#undef HAVE_GLIB
-#undef HAVE_GLIB_GLIB_H
+#cmakedefine HAVE_GLIB @HAVE_GLIB@
+#cmakedefine HAVE_GLIB_GLIB_H @HAVE_GLIB_GLIB_H@
 
         /* libguess */
-#undef HAVE_LIBGUESS
-#undef HAVE_LIBGUESS_EXTENSIONS
-#undef HAVE_LIBGUESS_H
+#cmakedefine HAVE_LIBGUESS @HAVE_LIBGUESS@
+#cmakedefine HAVE_LIBGUESS_EXTENSIONS @HAVE_LIBGUESS_EXTENSIONS@
+#cmakedefine HAVE_LIBGUESS_H @HAVE_LIBGUESS_H@
 
         /* libmagic and magic.h */
-#undef HAVE_LIBMAGIC
-#undef GNUWIN32_LIBMAGIC
-#undef HAVE_MAGIC_H
+#cmakedefine HAVE_LIBMAGIC @HAVE_LIBMAGIC@
+#cmakedefine GNUWIN32_LIBMAGIC @GNUWIN32_LIBMAGIC@
+#cmakedefine HAVE_MAGIC_H @HAVE_MAGIC_H@
 
         /* libenca and enca.h */
-#undef HAVE_LIBENCA
-#undef HAVE_ENCA_H
+#cmakedefine HAVE_LIBENCA @HAVE_LIBENCA@
+#cmakedefine HAVE_ENCA_H @HAVE_ENCA_H@
 
         /* libltdl and ltdl.h (libtool) */
-#undef HAVE_DLFCN_H
-#undef HAVE_LIBLTDL
-#undef HAVE_LTDL_H
+#cmakedefine HAVE_DLFCN_H @HAVE_DLFCN_H@
+#cmakedefine HAVE_LIBLTDL @HAVE_LIBLTDL@
+#cmakedefine HAVE_LTDL_H @HAVE_LTDL_H@
 
         /* libcurl */
-#undef HAVE_LIBCURL
-#undef GNUWIN32_LIBCURL
-#undef HAVE_CURL_CURL_H
-#undef HAVE_CURL_H
+#cmakedefine HAVE_LIBCURL @HAVE_LIBCURL@
+#cmakedefine GNUWIN32_LIBCURL @GNUWIN32_LIBCURL@
+#cmakedefine HAVE_CURL_CURL_H @HAVE_CURL_CURL_H@
+#cmakedefine HAVE_CURL_H @HAVE_CURL_H@
 
         /* libarchive */
-#undef HAVE_LIBARCHIVE
-#undef GNUWIN32_LIBARCHIVE
-#undef HAVE_ARCHIVE_H
-#undef HAVE_ARCHIVE_ENTRY_H
+#cmakedefine HAVE_LIBARCHIVE @HAVE_LIBARCHIVE@
+#cmakedefine GNUWIN32_LIBARCHIVE @GNUWIN32_LIBARCHIVE@
+#cmakedefine HAVE_ARCHIVE_H @HAVE_ARCHIVE_H@
+#cmakedefine HAVE_ARCHIVE_ENTRY_H @HAVE_ARCHIVE_ENTRY_H@
 
 
 /*
