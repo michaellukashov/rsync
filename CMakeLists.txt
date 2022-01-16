@@ -1,5 +1,6 @@
-project(rsync)
+project(rsync LANGUAGES C)
 cmake_minimum_required(VERSION 3.15)
+list(APPEND CMAKE_C_SOURCE_FILE_EXTENSIONS .cc)
 
 # use vcpkg scripts
 #
@@ -228,7 +229,12 @@ add_library(libw32_lib OBJECT
   libw32/w32_trace.c
   libw32/bsd_bsearch.c
   libw32/bsd_qsort.c
+
+  # from git-sdk-64\usr\src\MSYS2-packages\msys2-runtime\src\msys2-runtime\winsup\cygwin
+  libw32/msys2-runtime/fork.cc
 )
+set_source_files_properties(libw32/msys2-runtime/fork.cc PROPERTIES LANGUAGE C)
+
 
 target_include_directories(libw32_lib BEFORE PRIVATE
 #  lib
