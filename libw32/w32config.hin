@@ -297,16 +297,6 @@ __CPRAGMA_ONCE
 #endif
 #endif /*RETSIGTYPE*/
 
-#undef SIZEOF_CHAR 1
-#undef SIZEOF_SHORT 2
-#undef SIZEOF_INT 2
-#undef SIZEOF_FLOAT
-#undef SIZEOF_DOUBLE 8
-#undef SIZEOF_LONG 4
-#undef SIZEOF_LONG_LONG 4
-#undef SIZEOF_VOID_P 4
-#undef SIZEOF_WCHAR_T
-
 #cmakedefine SIZEOF_CHAR @SIZEOF_CHAR@
 #cmakedefine SIZEOF_SHORT @SIZEOF_SHORT@
 #cmakedefine SIZEOF_INT @SIZEOF_INT@
