@@ -32,10 +32,29 @@ details. */
    define _GNU_SOURCE. */
 #define _GNU_SOURCE 1
 
+//#include <sys/utypes.h>
 #include <sys/types.h>
 //#include <sys/strace.h>
 #include <inttypes.h>
 #include <sys/smallprint.h>
+#if defined(HAVE_STDINT_H)
+#include <stdint.h>
+#endif
+#if defined(_MSC_VER)
+#if !defined(uid_t) && !defined(gid_t)
+typedef int uid_t;
+typedef int gid_t;
+#endif
+#if !defined(id_t)
+typedef int id_t;                               /* used as a general identifier; can contain least a pid_t, uid_t, or gid_t. */
+#endif
+#ifndef _SSIZE_T_DEFINED
+#define _SSIZE_T_DEFINED
+#if !defined(ssize_t)
+typedef int ssize_t;
+#define ssize_t ssize_t                         /* see libssh */
+#endif
+#endif
 
 /* Declarations for functions used in C and C++ code. */
 #ifdef __cplusplus
