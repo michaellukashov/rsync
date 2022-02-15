@@ -99,6 +99,11 @@ set(RSYNCD_SYSCONF "\"/etc/rsyncd.conf\"")
 #add_definitions(-DWIN32_UNISTD_MAP)
 configure_file(config.h.cmake.in config.h)
 
+# reconfigure in case .git directory changed to update version correctly
+IF(EXISTS ${CMAKE_SOURCE_DIR}/.git)
+	set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/.git)
+endif()
+
 add_library(rsync_lib OBJECT
   lib/sysacls.h
   lib/pool_alloc.h
