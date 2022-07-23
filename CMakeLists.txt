@@ -236,14 +236,14 @@ add_library(libw32_lib OBJECT
   libw32/bsd_qsort.c
 
   # from git-sdk-64\usr\src\MSYS2-packages\msys2-runtime\src\msys2-runtime\winsup\cygwin
-  libw32/msys2-runtime/fork.cc
-  libw32/msys2-runtime/sigproc.cc
+#  libw32/msys2-runtime/fork.cc
+#  libw32/msys2-runtime/sigproc.cc
 )
-set_source_files_properties(
+#[[set_source_files_properties(
   libw32/msys2-runtime/fork.cc
   libw32/msys2-runtime/sigproc.cc
   PROPERTIES LANGUAGE C
-)
+)]]
 
 target_include_directories(libw32_lib BEFORE PRIVATE
 #  lib
@@ -251,8 +251,8 @@ target_include_directories(libw32_lib BEFORE PRIVATE
   libw32
 #  ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
-  libw32/msys2-runtime
-  libw32/msys2-runtime/include
+#  libw32/msys2-runtime
+#  libw32/msys2-runtime/include
 )
 
 set(ZLIB_COMPAT ON)
