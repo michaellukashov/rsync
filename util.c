@@ -83,7 +83,7 @@ int fd_pair(int fd[2])
 	int ret;
 
 #ifdef HAVE_SOCKETPAIR
-	ret = w32_socketpair_fd(AF_UNIX, SOCK_STREAM, 0, fd);
+	ret = socketpair(AF_UNIX, SOCK_STREAM, 0, fd);
 #else
 	ret = pipe(fd);
 #endif
