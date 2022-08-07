@@ -395,6 +395,11 @@ target_include_directories(rsync BEFORE PRIVATE
 
 target_compile_definitions(rsync PRIVATE
   -D__INSIDE_CYGWIN_NET__
+  -DNO_GZIP -DSTRICT -DNOCRYPT -DOPENSSL_NO_LOCKING
+  -D_CRTIMP= -D_LIB -D_WINDOWS -DWIN32 -D_WIN32_WINNT=0x0501
+  -D_SCL_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS
+  -D_WINSOCK_DEPRECATED_NO_WARNINGS
+  -DCOM_NO_WINDOWS_H
 )
 
 set_target_properties(rsync PROPERTIES
@@ -407,6 +412,9 @@ target_link_libraries(rsync
   popt_lib
   libw32_lib
   zlibstatic
+  ws2_32.lib
+  shell32.lib
+  delayimp.lib
 #  aligned_new.lib
   $<$<CONFIG:Debug>:libcmtd.lib>
 #  $<$<CONFIG:Debug>:libcpmtd.lib>
@@ -415,6 +423,15 @@ target_link_libraries(rsync
   $<$<CONFIG:Release>:libcmt.lib>
 #  $<$<CONFIG:Release>:libcpmt.lib>
 #  $<$<CONFIG:Debug>:libucrt.lib>
+)
+
+target_link_options(rsync PRIVATE
+  /DELAYLOAD:version.dll
+  /DELAYLOAD:ws2_32.dll
+  /DELAYLOAD:oleaut32.dll
+  /DELAYLOAD:shell32.dll
+  /DELAYLOAD:shlwapi.dll
+  /DELAYLOAD:crypt32.dll
 )
 
 set_property(TARGET rsync
