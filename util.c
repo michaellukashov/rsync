@@ -575,7 +575,7 @@ void kill_all(int sig)
 		if (p <= 0)
 			continue;
 
-		kill(p, sig);
+		w32_kill(p, sig);
 	}
 }
 

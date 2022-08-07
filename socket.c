@@ -540,7 +540,7 @@ int is_a_socket(int fd)
 static void sigchld_handler(UNUSED(int val))
 {
 #ifdef WNOHANG
-	while (waitpid(-1, NULL, WNOHANG) > 0) {}
+	while (w32_waitpid(-1, NULL, WNOHANG) > 0) {}
 #endif
 #ifndef HAVE_SIGACTION
 	signal(SIGCHLD, sigchld_handler);

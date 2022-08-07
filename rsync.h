@@ -1369,7 +1369,7 @@ size_t strlcat(char *d, const char *s, size_t bufsize);
 #define	WEXITSTATUS(stat)	((int)(((stat)>>8)&0xFF))
 #endif
 #ifndef WIFEXITED
-#define	WIFEXITED(stat)		((int)((stat)&0xFF) == 0)
+#define WIFEXITED(stat) ((int)((stat)&0xFF) == 0)
 #endif
 
 #define exit_cleanup(code) _exit_cleanup(code, __FILE__, __LINE__)
@@ -1377,13 +1377,13 @@ size_t strlcat(char *d, const char *s, size_t bufsize);
 #ifdef HAVE_GETEUID
 #define MY_UID() geteuid()
 #else
-#define MY_UID() getuid()
+#define MY_UID() w32_getuid()
 #endif
 
 #ifdef HAVE_GETEGID
 #define MY_GID() getegid()
 #else
-#define MY_GID() getgid()
+#define MY_GID() w32_getgid()
 #endif
 
 #ifdef FORCE_FD_ZERO_MEMSET

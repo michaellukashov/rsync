@@ -33,6 +33,10 @@
 #include <sys/syscall.h>
 #endif
 
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
+
 extern int dry_run;
 extern int am_root;
 extern int am_sender;
@@ -246,7 +250,7 @@ int do_chmod(const char *path, mode_t mode)
 		code = 1;
 # endif
 	} else
-		code = WIN32_CHMOD(path, mode & CHMOD_BITS); /* DISCOURAGED FUNCTION */
+		code = _chmod(path, mode & CHMOD_BITS); /* DISCOURAGED FUNCTION */
 #endif /* !HAVE_LCHMOD */
 	if (code != 0 && (preserve_perms || preserve_executability))
 		return code;

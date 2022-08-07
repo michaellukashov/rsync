@@ -128,6 +128,8 @@ char **raw_argv, **cooked_argv;
 #  define SIGACTMASK(n,h) SIGACTION(n,h)
 # endif
 static struct sigaction sigact;
+#else
+#define SIGACTMASK(n,h)
 #endif
 
 struct pid_status {
@@ -147,7 +149,7 @@ pid_t wait_process(pid_t pid, int *status_ptr, int flags)
 	pid_t waited_pid;
 
 	do {
-		waited_pid = waitpid(pid, status_ptr, flags);
+		waited_pid = w32_waitpid(pid, status_ptr, flags);
 	} while (waited_pid == -1 && errno == EINTR);
 
 	if (waited_pid == -1 && errno == ECHILD) {
@@ -277,10 +279,12 @@ static void become_copy_as_user()
 		gid = pw->pw_gid;
 	}
 
+#if defined(HAVE_SETUID)
 	if (setgid(gid) < 0) {
 		rsyserr(FERROR, errno, "setgid failed");
 		exit_cleanup(RERR_SYNTAX);
 	}
+#endif
 #ifdef HAVE_SETGROUPS
 	if (setgroups(1, &gid)) {
 		rsyserr(FERROR, errno, "setgroups failed");
@@ -294,6 +298,7 @@ static void become_copy_as_user()
 	}
 #endif
 
+#if defined(HAVE_SETUID)
 	if (setuid(uid) < 0
 #ifdef HAVE_SETEUID
 	 || seteuid(uid) < 0
@@ -302,6 +307,7 @@ static void become_copy_as_user()
 		rsyserr(FERROR, errno, "setuid failed");
 		exit_cleanup(RERR_SYNTAX);
 	}
+#endif
 
 	our_uid = MY_UID();
 	our_gid = MY_GID();
@@ -1115,7 +1121,7 @@ static int do_recv(int f_in, int f_out, char *local_name)
 	}
 	io_flush(FULL_FLUSH);
 
-	kill(pid, SIGUSR2);
+	w32_kill(pid, SIGUSR2);
 	wait_process_with_flush(pid, &exit_code);
 	return exit_code;
 }
@@ -1621,7 +1627,7 @@ void remember_children(UNUSED(int val))
 	 * out we're instead saving the child exit statuses for later use.
 	 * The waitpid() loop presumably eliminates all possibility of leaving
 	 * zombie children, maybe that's why he did it. */
-	while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
+	while ((pid = w32_waitpid(-1, &status, WNOHANG)) > 0) {
 		/* save the child's exit status */
 		for (cnt = 0; cnt < MAXCHILDPROCS; cnt++) {
 			if (pid_stat_table[cnt].pid == 0) {

@@ -903,11 +903,13 @@ static int rsync_module(int f_in, int f_out, int i, const char *addr, const char
 		 * a warning, unless a "require chroot" flag is set,
 		 * in which case we fail.
 		 */
+#if defined(HAVE_CHROOT)
 		if (chroot(module_chdir)) {
 			rsyserr(FLOG, errno, "chroot %s failed", module_chdir);
 			io_printf(f_out, "@ERROR: chroot failed\n");
 			return -1;
 		}
+#endif
 		module_chdir = module_dir;
 	}
 
@@ -931,12 +933,14 @@ static int rsync_module(int f_in, int f_out, int i, const char *addr, const char
 	}
 
 	if (gid_list.count) {
+#if defined(HAVE_SETUID)
 		gid_t *gid_array = gid_list.items;
 		if (setgid(gid_array[0])) {
 			rsyserr(FLOG, errno, "setgid %ld failed", (long)gid_array[0]);
 			io_printf(f_out, "@ERROR: setgid failed\n");
 			return -1;
 		}
+#endif
 #ifdef HAVE_SETGROUPS
 		/* Set the group(s) we want to be active. */
 		if (setgroups(gid_list.count, gid_array)) {
@@ -957,6 +961,7 @@ static int rsync_module(int f_in, int f_out, int i, const char *addr, const char
 	}
 
 	if (set_uid) {
+#if defined(HAVE_SETUID)
 		if (setuid(uid) < 0
 #ifdef HAVE_SETEUID
 		 || seteuid(uid) < 0
@@ -966,6 +971,7 @@ static int rsync_module(int f_in, int f_out, int i, const char *addr, const char
 			io_printf(f_out, "@ERROR: setuid failed\n");
 			return -1;
 		}
+#endif
 
 		our_uid = MY_UID();
 		am_root = (our_uid == ROOT_UID);
@@ -1228,10 +1234,12 @@ int start_daemon(int f_in, int f_out)
 	p = lp_daemon_chroot();
 	if (*p) {
 		log_init(0); /* Make use we've initialized syslog before chrooting. */
+#if defined(HAVE_CHROOT)
 		if (chroot(p) < 0 || chdir("/") < 0) {
 			rsyserr(FLOG, errno, "daemon chroot %s failed", p);
 			return -1;
 		}
+#endif
 	}
 	p = lp_daemon_gid();
 	if (*p) {
@@ -1240,10 +1248,12 @@ int start_daemon(int f_in, int f_out)
 			rprintf(FLOG, "Invalid daemon gid: %s\n", p);
 			return -1;
 		}
+#if defined(HAVE_SETUID)
 		if (setgid(gid) < 0) {
 			rsyserr(FLOG, errno, "Unable to set group to daemon gid %ld", (long)gid);
 			return -1;
 		}
+#endif
 		our_gid = MY_GID();
 	}
 	p = lp_daemon_uid();
@@ -1253,10 +1263,12 @@ int start_daemon(int f_in, int f_out)
 			rprintf(FLOG, "Invalid daemon uid: %s\n", p);
 			return -1;
 		}
+#if defined(HAVE_SETUID)
 		if (setuid(uid) < 0) {
 			rsyserr(FLOG, errno, "Unable to set user to daemon uid %ld", (long)uid);
 			return -1;
 		}
+#endif
 		our_uid = MY_UID();
 		am_root = (our_uid == ROOT_UID);
 	}
