@@ -110,7 +110,10 @@ if(MSVC)
 #  add_definitions(-DWIN32_UNISTD_MAP)
 #  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
 #  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+#  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} /MT")
+#  set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /MTd")
 endif()
+#message("CMAKE_C_FLAGS_DEBUG: ${CMAKE_C_FLAGS_DEBUG}")
 
 configure_file(config.h.cmake.in config.h)
 
@@ -119,7 +122,7 @@ IF(EXISTS ${CMAKE_SOURCE_DIR}/.git)
 	set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/.git)
 endif()
 
-add_library(rsync_lib OBJECT
+add_library(rsync_lib STATIC
   lib/sysacls.h
   lib/pool_alloc.h
   lib/md-defines.h
@@ -143,6 +146,11 @@ add_library(rsync_lib OBJECT
 #  lib/inet_pton.c
 )
 
+set_property(TARGET rsync_lib
+  PROPERTY
+  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+)
+
 target_include_directories(rsync_lib BEFORE PRIVATE
   lib
 #  libw32/msvc
@@ -155,7 +163,7 @@ target_compile_definitions(rsync_lib PRIVATE
   -D__INSIDE_CYGWIN_NET__
 )
 
-add_library(popt_lib OBJECT
+add_library(popt_lib STATIC
   popt/system.h
   popt/popt.h
   popt/poptint.h
@@ -165,6 +173,11 @@ add_library(popt_lib OBJECT
   popt/poptconfig.c
   popt/popthelp.c
   popt/poptparse.c
+)
+
+set_property(TARGET popt_lib
+  PROPERTY
+  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
 )
 
 target_include_directories(popt_lib BEFORE PRIVATE
@@ -186,7 +199,7 @@ set(HAVE_STRLCPY 1)
 
 configure_file(libw32/w32config.hin w32config.h)
 
-add_library(libw32_lib OBJECT
+add_library(libw32_lib STATIC
   libw32/w32_getlocale.c
   libw32/w32_realpath.c
   libw32/w32_write.c
@@ -263,6 +276,11 @@ add_library(libw32_lib OBJECT
   PROPERTIES LANGUAGE C
 )]]
 
+set_property(TARGET libw32_lib
+  PROPERTY
+  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+)
+
 target_include_directories(libw32_lib BEFORE PRIVATE
 #  lib
 #  libw32/msvc
@@ -280,6 +298,16 @@ set(WITH_NEW_STRATEGIES ON)
 set(ZLIB_COMPAT ON)
 set(WITH_OPTIM ON)
 add_subdirectory(zlib-ng)
+
+set_property(TARGET zlib
+  PROPERTY
+  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+)
+
+set_property(TARGET zlibstatic
+  PROPERTY
+  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+)
 
 add_executable(rsync
   byteorder.h
@@ -379,6 +407,14 @@ target_link_libraries(rsync
   popt_lib
   libw32_lib
   zlibstatic
+#  aligned_new.lib
+  $<$<CONFIG:Debug>:libcmtd.lib>
+#  $<$<CONFIG:Debug>:libcpmtd.lib>
+#  $<$<CONFIG:Debug>:libucrtd.lib>
+
+  $<$<CONFIG:Release>:libcmt.lib>
+#  $<$<CONFIG:Release>:libcpmt.lib>
+#  $<$<CONFIG:Debug>:libucrt.lib>
 )
 
 set_property(TARGET rsync
@@ -386,6 +422,8 @@ set_property(TARGET rsync
   MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
 )
 
+#ucm_add_flags(CXX C /MT CONFIG Release)
+#ucm_add_flags(CXX C /MTd CONFIG Debug)
 ucm_set_runtime(STATIC)
 #ucm_print_flags()
 ucm_add_linker_flags(EXE
