@@ -47,6 +47,12 @@ __CPRAGMA_ONCE
 #endif //__MAKEDEPEND__
 #endif //_MSC_VER
 
+#ifndef HAVE_WINDOWS
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64) || defined(__NT__)
+#define HAVE_WINDOWS 1
+#endif
+#endif /* HAVE_WINDOWS */
+
 #pragma warning(disable:4115)
 
 #if defined(_POSIX_)
@@ -131,6 +137,8 @@ __CPRAGMA_ONCE
 #include <w32_corecrt.h>
 
 //typedef _stat64 stat64;
+#define stat64 _stat64
+#define fstat64 _fstat64
 
 #if defined(HAVE_CONFIG_H)                      /* stand alone? */
 #ifndef  NEED_GETOPT
