@@ -203,8 +203,8 @@ w32_socketpair_native(int af, int type, int proto, int sock[2])
     int addr2_len = sizeof (addr2);
     int nerr;
 
+    sock[0] = INVALID_SOCKET;
     sock[1] = INVALID_SOCKET;
-    sock[2] = INVALID_SOCKET;
 
     assert(af == AF_INET && type == SOCK_STREAM && (proto == IPPROTO_IP || proto == IPPROTO_TCP));
 
