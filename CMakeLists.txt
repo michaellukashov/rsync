@@ -1,5 +1,7 @@
-project(rsync LANGUAGES C)
 cmake_minimum_required(VERSION 3.15)
+cmake_policy(SET CMP0048 NEW)
+cmake_policy(SET CMP0115 NEW)
+project(rsync LANGUAGES C)
 list(APPEND CMAKE_C_SOURCE_FILE_EXTENSIONS .cc)
 
 # use vcpkg scripts
@@ -89,6 +91,8 @@ set(HAVE_WAITPID 1)
 set(HAVE_CHMOD 1)
 set(HAVE_FTRUNCATE 1)
 set(HAVE_SOCKETPAIR 1)
+set(HAVE_ERRNO_DECL 1)
+set(HAVE_INET_PTON 1)
 
 set(RSYNC_PATH "\"rsync\"")
 set(RSYNC_RSH "\"ssh\"")
@@ -97,6 +101,17 @@ set(NOBODY_USER "\"nobody\"")
 set(RSYNCD_SYSCONF "\"/etc/rsyncd.conf\"")
 
 #add_definitions(-DWIN32_UNISTD_MAP)
+if(MSVC)
+  set(CMAKE_DEBUG_POSTFIX "d")
+  add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
+  add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
+  add_definitions(-D_CRT_NO_POSIX_ERROR_CODES)
+  add_definitions(-D_WIN32_WINNT=0x0600)
+#  add_definitions(-DWIN32_UNISTD_MAP)
+#  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+#  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+endif()
+
 configure_file(config.h.cmake.in config.h)
 
 # reconfigure in case .git directory changed to update version correctly
@@ -122,10 +137,10 @@ add_library(rsync_lib OBJECT
   lib/pool_alloc.c
   lib/sysacls.c
   lib/sysxattrs.c
-#  lib/getpass.c
-#  lib/getaddrinfo.c
-  lib/inet_ntop.c
-  lib/inet_pton.c
+  lib/getpass.c
+  lib/getaddrinfo.c
+#  lib/inet_ntop.c
+#  lib/inet_pton.c
 )
 
 target_include_directories(rsync_lib BEFORE PRIVATE
@@ -235,6 +250,9 @@ add_library(libw32_lib OBJECT
   libw32/bsd_bsearch.c
   libw32/bsd_qsort.c
 
+  libw32/syslog.c
+  libw32/alarm.c
+
   # from git-sdk-64\usr\src\MSYS2-packages\msys2-runtime\src\msys2-runtime\winsup\cygwin
 #  libw32/msys2-runtime/fork.cc
 #  libw32/msys2-runtime/sigproc.cc
@@ -329,12 +347,13 @@ add_executable(rsync
 #  getfsdev.c
 #  testrun.c
 #  tls.c
+  fork.c
 )
 
-add_custom_target(rsync_sources SOURCES
+#[[add_custom_target(rsync_sources SOURCES
   config.h.cmake.in
   libw32/w32config.hin
-)
+)]]
 
 target_include_directories(rsync BEFORE PRIVATE
   lib
@@ -360,6 +379,11 @@ target_link_libraries(rsync
   popt_lib
   libw32_lib
   zlibstatic
+)
+
+set_property(TARGET rsync
+  PROPERTY
+  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
 )
 
 ucm_set_runtime(STATIC)
