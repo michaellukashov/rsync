@@ -35,7 +35,7 @@ char *getpass(const char *prompt)
 
 	if (tty)
 		in = out = tty;
-
+#if !defined(HAVE_WINDOWS)
 	if (tcgetattr(fileno(in), &tty_old) == 0) {
 		tty_new = tty_old;
 		tty_new.c_lflag &= ~(ECHO | ISIG);
@@ -43,7 +43,7 @@ char *getpass(const char *prompt)
 		if (tcsetattr(fileno(in), TCSAFLUSH, &tty_new) == 0)
 			tty_changed = True;
 	}
-
+#endif
 	if (!tty_changed)
 		fputs("(WARNING: will be visible) ", out);
 	fputs(prompt, out);
@@ -54,8 +54,10 @@ char *getpass(const char *prompt)
 	/* Print the newline that hasn't been echoed. */
 	fputc('\n', out);
 
+#if !defined(HAVE_WINDOWS)
 	if (tty_changed)
 		tcsetattr(fileno(in), TCSAFLUSH, &tty_old);
+#endif
 
 	if (tty)
 		fclose(tty);
