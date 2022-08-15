@@ -150,23 +150,23 @@ pid_t local_child(int argc, char **argv, int *f_in, int *f_out,
 		}
 
 		if (dup2(to_child_pipe[0], STDIN_FILENO) < 0
-		 || close(to_child_pipe[1]) < 0
-		 || close(from_child_pipe[0]) < 0
+		 || w32_close(to_child_pipe[1]) < 0
+		 || w32_close(from_child_pipe[0]) < 0
 		 || dup2(from_child_pipe[1], STDOUT_FILENO) < 0) {
 			rsyserr(FERROR, errno, "Failed to dup/close");
 			exit_cleanup(RERR_IPC);
 		}
 		if (to_child_pipe[0] != STDIN_FILENO)
-			close(to_child_pipe[0]);
+			w32_close(to_child_pipe[0]);
 		if (from_child_pipe[1] != STDOUT_FILENO)
-			close(from_child_pipe[1]);
+			w32_close(from_child_pipe[1]);
 #ifdef ICONV_CONST
 		setup_iconv();
 #endif
 		child_main(argc, argv);
 	}
 
-	if (close(from_child_pipe[1]) < 0 || close(to_child_pipe[0]) < 0) {
+	if (w32_close(from_child_pipe[1]) < 0 || w32_close(to_child_pipe[0]) < 0) {
 		rsyserr(FERROR, errno, "Failed to close");
 		exit_cleanup(RERR_IPC);
 	}
