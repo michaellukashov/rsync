@@ -1,7 +1,7 @@
 #ifndef LIBW32_SYS_IOCTL_H_INCLUDED
 #define LIBW32_SYS_IOCTL_H_INCLUDED
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_libw32_sys_ioctl_h,"$Id: ioctl.h,v 1.4 2018/10/12 00:52:05 cvsuser Exp $")
+
 __CPRAGMA_ONCE
 
 /* -*- mode: c; indent-width: 4; -*- */
@@ -25,5 +25,5 @@ __CPRAGMA_ONCE
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * ==end==
  */
- 
+
 #endif /*LIBW32_SYS_IOCTL_H_INCLUDED*/

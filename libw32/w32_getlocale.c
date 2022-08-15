@@ -1,5 +1,5 @@
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_w32_getlocale_c,"$Id: w32_getlocale.c,v 1.1 2018/10/15 09:41:29 cvsuser Exp $")
+
 
 /* -*- mode: c; indent-width: 4; -*- */
 /*

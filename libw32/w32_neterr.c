@@ -1,5 +1,5 @@
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_w32_neterr_c,"$Id: w32_neterr.c,v 1.6 2018/10/12 00:52:04 cvsuser Exp $")
+
 
 /* -*- mode: c; indent-width: 4; -*- */
 /*

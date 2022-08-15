@@ -1,5 +1,5 @@
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_w32_dir_c, "$Id: w32_dir.c,v 1.8 2018/10/12 00:52:03 cvsuser Exp $")
+
 
 /* -*- mode: c; indent-width: 4; -*- */
 /*
@@ -256,7 +256,7 @@ w32_chdir(const char *path)
                  *      environment variables. Function like (fullpath, spawn, etc) *may* need them to be set.
                  *
                  *  If associated with a 'drive', the current directory should have the form of the example below:
-                 *       
+                 *
                  *       C:\Program and Settings\users\
                  *
                  *  so that the environment variable should be of the form:

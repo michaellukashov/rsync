@@ -1,5 +1,5 @@
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_w32_child_c,"$Id: w32_child.c,v 1.8 2018/10/12 00:52:03 cvsuser Exp $")
+
 
 /* -*- mode: c; indent-width: 4; -*- */
 /*
@@ -25,7 +25,7 @@ __CIDENT_RCSID(gr_w32_child_c,"$Id: w32_child.c,v 1.8 2018/10/12 00:52:03 cvsuse
  * Notice: Portions of this text are reprinted and reproduced in electronic form. from
  * IEEE Portable Operating System Interface (POSIX), for reference only. Copyright (C)
  * 2001-2003 by the Institute of. Electrical and Electronics Engineers, Inc and The Open
- * Group. Copyright remains with the authors and the original Standard can be obtained 
+ * Group. Copyright remains with the authors and the original Standard can be obtained
  * online at http://www.opengroup.org/unix/online.html.
  * ==end==
  *
@@ -560,13 +560,13 @@ w32_child_exec(
     char *argblk;
     char *envblk;
 
-    /* 
-     *  Set up the start up info struct 
+    /*
+     *  Set up the start up info struct
      *      USESTDHANDLES,
      *          The hStdInput, hStdOutput, and hStdError members contain additional information.
      *
-     *          If this flag is specified when calling one of the process creation functions, 
-     *          the handles must be inheritable and the function's bInheritHandles parameter 
+     *          If this flag is specified when calling one of the process creation functions,
+     *          the handles must be inheritable and the function's bInheritHandles parameter
      *          must be set to TRUE. For more information;
      */
     (void) memset(&si, 0, sizeof(STARTUPINFO));
@@ -583,15 +583,15 @@ w32_child_exec(
     si.dwFlags = STARTF_USESTDHANDLES;
     si.dwFlags |= STARTF_USESHOWWINDOW;
 
-    /* 
-     *  Build env and command line. 
+    /*
+     *  Build env and command line.
      */
     if (BuildVectors(args, &argblk, &envblk) != 0) {
         InternalError("building arg and env");
     }
 
-    /* 
-     *  Launch the process that you want to redirect. 
+    /*
+     *  Launch the process that you want to redirect.
      */
     if (0 == (hProc = ExecChild(args, NULL, argblk, envblk, &si, &pi))) {
         const char *path, *cmd =

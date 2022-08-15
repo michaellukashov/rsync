@@ -1,7 +1,7 @@
 #ifndef WIN32_CONFIG_H_INCLUDED
 #define WIN32_CONFIG_H_INCLUDED
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_libw32_w32config_h, "$Id: w32config.hin,v 1.8 2018/10/18 22:38:15 cvsuser Exp $")
+
 __CPRAGMA_ONCE
 /* -*- mode: c; set-indent: 4; -*- */
 /* $Id: w32config.hin,v 1.8 2018/10/18 22:38:15 cvsuser Exp $

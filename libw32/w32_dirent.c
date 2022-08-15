@@ -1,5 +1,5 @@
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_w32_dirent_c,"$Id: w32_dirent.c,v 1.7 2018/10/12 00:52:03 cvsuser Exp $")
+
 
 /* -*- mode: c; indent-width: 4; -*- */
 /*
@@ -256,7 +256,7 @@ opendir(const char *name)
 
     /* Open directory
      *
-     *    If you are writing a 32-bit application to list all the files in a directory and the 
+     *    If you are writing a 32-bit application to list all the files in a directory and the
      *    application may be running on a 64-bit computer, you should call Wow64DisableWow64FsRedirection
      *    before calling FindFirstFileEx and call Wow64RevertWow64FsRedirection after the last call to FindNextFile.
      *

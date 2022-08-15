@@ -1,5 +1,5 @@
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_w32_getsubopt_c,"$Id: w32_getsubopt.c,v 1.4 2018/10/12 00:52:03 cvsuser Exp $")
+
 
 /* -*- mode: c; indent-width: 4; -*- */
 /*-

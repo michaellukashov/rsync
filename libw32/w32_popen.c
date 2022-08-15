@@ -1,5 +1,5 @@
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_w32_popen_c,"$Id: w32_popen.c,v 1.6 2018/10/12 00:52:04 cvsuser Exp $")
+
 
 /* -*- mode: c; indent-width: 4; -*- */
 /*
@@ -26,7 +26,7 @@ __CIDENT_RCSID(gr_w32_popen_c,"$Id: w32_popen.c,v 1.6 2018/10/12 00:52:04 cvsuse
  * Notice: Portions of this text are reprinted and reproduced in electronic form. from
  * IEEE Portable Operating System Interface (POSIX), for reference only. Copyright (C)
  * 2001-2003 by the Institute of. Electrical and Electronics Engineers, Inc and The Open
- * Group. Copyright remains with the authors and the original Standard can be obtained 
+ * Group. Copyright remains with the authors and the original Standard can be obtained
  * online at http://www.opengroup.org/unix/online.html.
  * ==extra==
  */
@@ -294,11 +294,11 @@ w32_pread_err(FILE *file, char *buf, int length)
 
         if ((void *)-1 != pipe_queue) {
             struct pipe **p2;                   // list pointers
-            
+
             EnterCriticalSection(&pipe_guard);
             for (p2 = &pipe_queue; *p2; p2 = &(*p2)->next) {
                 struct pipe *p = *p2;
-            
+
                 assert(p->magic == PIPE_MAGIC);
                 if (p->file == file) {
                     handle = p->hErr;
@@ -312,7 +312,7 @@ w32_pread_err(FILE *file, char *buf, int length)
             DWORD result;
             if (ReadFile(handle, buf, length, &result, NULL)) {
                 return (int)result;
-            }   
+            }
         }
     }
     return -1;                                  // done
@@ -386,7 +386,7 @@ w32_pclose(FILE *file)
 
         if ((void *)-1 != pipe_queue) {
             struct pipe **p2;                       // list pointers
-            
+
             EnterCriticalSection(&pipe_guard);
             for (p2 = &pipe_queue; *p2; p2 = &(*p2)->next) {
                 struct pipe *t_p = *p2;

@@ -1,11 +1,11 @@
 #ifndef LIBW32_SYS_UTYPES_H_INCLUDED
 #define LIBW32_SYS_UTYPES_H_INCLUDED
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_libw32_sys_utypes_h,"$Id: utypes.h,v 1.7 2018/10/18 22:39:47 cvsuser Exp $")
+
 __CPRAGMA_ONCE
 
 /* -*- mode: c; indent-width: 4; -*- */
-/* 
+/*
  * win32 unix types
  *
  * Copyright (c) 2012 - 2018, Adam Young.

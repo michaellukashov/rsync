@@ -1,7 +1,7 @@
 #ifndef LIBW32_LANGINFO_H_INCLUDED
 #define LIBW32_LANGINFO_H_INCLUDED
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_libw32_langinfo_h,"$Id: langinfo.h,v 1.4 2018/09/29 02:22:53 cvsuser Exp $")
+
 __CPRAGMA_ONCE
 
 /* -*- mode: c; indent-width: 4; -*- */
@@ -58,7 +58,7 @@ typedef enum {
 //  ABDAY_5         = 18,
 //  ABDAY_6         = 19,
 //  ABDAY_7         = 20,
-//                      
+//
 //  MON_1           = 21,       /* month names */
 //  MON_2           = 22,
 //  MON_3           = 23,

@@ -1,7 +1,7 @@
 #ifndef LIBW32_SYS_SOCKET_H_INCLUDED
 #define LIBW32_SYS_SOCKET_H_INCLUDED
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_libw32_sys_socket_h,"$Id: socket.h,v 1.8 2018/10/08 21:54:48 cvsuser Exp $")
+
 __CPRAGMA_ONCE
 
 /* -*- mode: c; indent-width: 4; -*- */

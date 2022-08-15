@@ -1,7 +1,7 @@
 #ifndef LIBW32_SYS_TCP_H_INCLUDED
 #define LIBW32_SYS_TCP_H_INCLUDED
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_libw32_netinet_tcp_h,"$Id: tcp.h,v 1.3 2018/10/08 21:54:48 cvsuser Exp $")
+
 __CPRAGMA_ONCE
 
 /* -*- mode: c; indent-width: 4; -*- */
@@ -29,7 +29,7 @@ __CPRAGMA_ONCE
  * Notice: Portions of this text are reprinted and reproduced in electronic form. from
  * IEEE Portable Operating System Interface (POSIX), for reference only. Copyright (C)
  * 2001-2003 by the Institute of. Electrical and Electronics Engineers, Inc and The Open
- * Group. Copyright remains with the authors and the original Standard can be obtained 
+ * Group. Copyright remains with the authors and the original Standard can be obtained
  * online at http://www.opengroup.org/unix/online.html.
  * ==end==
  */

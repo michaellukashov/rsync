@@ -1,5 +1,5 @@
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_w32_io_c, "$Id: w32_io.c,v 1.13 2018/10/18 22:39:26 cvsuser Exp $")
+
 
 /* -*- mode: c; indent-width: 4; -*- */
 /*
@@ -23,7 +23,7 @@ __CIDENT_RCSID(gr_w32_io_c, "$Id: w32_io.c,v 1.13 2018/10/18 22:39:26 cvsuser Ex
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- * ==end== 
+ * ==end==
  *
  * Notice: Portions of this text are reprinted and reproduced in electronic form. from
  * IEEE Portable Operating System Interface (POSIX), for reference only. Copyright (C)

@@ -1,7 +1,7 @@
 #ifndef LIBW32_SYS_VFS_H
 #define LIBW32_SYS_VFS_H
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_libw32_sys_vfs_h,"$Id: vfs.h,v 1.3 2018/09/29 02:22:56 cvsuser Exp $")
+
 __CPRAGMA_ONCE
 
 /* -*- mode: c; indent-width: 4; -*- */

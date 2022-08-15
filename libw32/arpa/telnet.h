@@ -1,7 +1,7 @@
 #ifndef LIBW32_ARPA_TELNET_H_INCLUDED
 #define LIBW32_ARPA_TELNET_H_INCLUDED
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_libw32_arpa_telnet_h,"$Id: telnet.h,v 1.2 2018/09/29 02:22:55 cvsuser Exp $")
+
 __CPRAGMA_ONCE
 
 /* -*- mode: c; indent-width: 4; -*- */

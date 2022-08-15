@@ -1,5 +1,5 @@
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_w32_getcwd_c,"$Id: w32_getcwd.c,v 1.7 2018/10/12 00:52:03 cvsuser Exp $")
+
 
 /* -*- mode: c; indent-width: 4; -*- */
 /*
@@ -25,7 +25,7 @@ __CIDENT_RCSID(gr_w32_getcwd_c,"$Id: w32_getcwd.c,v 1.7 2018/10/12 00:52:03 cvsu
  * Notice: Portions of this text are reprinted and reproduced in electronic form. from
  * IEEE Portable Operating System Interface (POSIX), for reference only. Copyright (C)
  * 2001-2003 by the Institute of. Electrical and Electronics Engineers, Inc and The Open
- * Group. Copyright remains with the authors and the original Standard can be obtained 
+ * Group. Copyright remains with the authors and the original Standard can be obtained
  * online at http://www.opengroup.org/unix/online.html.
  * ==end==
  */
@@ -111,16 +111,16 @@ w32_getcwd(char *path, int size)
         }
 
         //  If the function succeeds, the return value is the length, in characters,
-        //  of the string copied to lpszLongPath, not including the terminating 
+        //  of the string copied to lpszLongPath, not including the terminating
         //  null character.
         //
-        //  If the lpBuffer buffer is too small to contain the path, the return value 
-        //  is the size, in characters, of the buffer that is required to hold 
+        //  If the lpBuffer buffer is too small to contain the path, the return value
+        //  is the size, in characters, of the buffer that is required to hold
         //  the path and the terminating null character.
         //
         if ((ret = GetCurrentDirectoryA(sizeof(t_path), t_path)) == 0) {
             w32_errno_set();
-            
+
         } else if (ret >= (DWORD)size || ret >= sizeof(t_path)) {
             errno = ENOMEM;
 
@@ -150,7 +150,7 @@ w32_getcwd(char *path, int size)
 LIBW32_API char *
 w32_getcwdd(char drive, char *path, int size)
 {
-    const unsigned nDrive = 
+    const unsigned nDrive =
             (isalpha((unsigned char)drive) ? (toupper(drive) - 'A') : 0xff);
 
     if (NULL == path || size <= 0) {
@@ -183,11 +183,11 @@ w32_getcwdd(char drive, char *path, int size)
         }
 
         //  If the function succeeds, the return value is the length, in characters,
-        //  of the string copied to lpszLongPath, not including the terminating 
+        //  of the string copied to lpszLongPath, not including the terminating
         //  null character.
         //
-        //  If the lpBuffer buffer is too small to contain the path, the return value 
-        //  is the size, in characters, of the buffer that is required to hold 
+        //  If the lpBuffer buffer is too small to contain the path, the return value
+        //  is the size, in characters, of the buffer that is required to hold
         //  the path and the terminating null character.
         //
         pathrel[0] = ('A' + nDrive);            /* A ... Z */
@@ -197,11 +197,11 @@ w32_getcwdd(char drive, char *path, int size)
 
         } else if (ret >= (DWORD)size || ret >= sizeof(t_path)) {
             errno = ENOMEM;
-            
+
         } else {
             const char *in;
             char *out;
-            
+
             for (in = t_path, out = path; *in; ++in) {
                 if ('~' == *in) {               /* shortname expand */
                     (void) GetLongPathNameA(t_path, t_path, sizeof(t_path));

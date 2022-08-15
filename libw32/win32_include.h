@@ -1,7 +1,7 @@
 #ifndef LIBW32_WIN32_INCLUDE_H_INCLUDED
 #define LIBW32_WIN32_INCLUDE_H_INCLUDED
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_libw32_win32_include_h,"$Id: win32_include.h,v 1.5 2018/09/29 02:22:55 cvsuser Exp $")
+
 __CPRAGMA_ONCE
 
 /* -*- mode: c; indent-width: 4; -*- */
@@ -28,7 +28,7 @@ __CPRAGMA_ONCE
  * Notice: Portions of this text are reprinted and reproduced in electronic form. from
  * IEEE Portable Operating System Interface (POSIX), for reference only. Copyright (C)
  * 2001-2003 by the Institute of. Electrical and Electronics Engineers, Inc and The Open
- * Group. Copyright remains with the authors and the original Standard can be obtained 
+ * Group. Copyright remains with the authors and the original Standard can be obtained
  * online at http://www.opengroup.org/unix/online.html.
  * ==end==
  */

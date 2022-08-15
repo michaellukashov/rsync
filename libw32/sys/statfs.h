@@ -1,7 +1,7 @@
 #ifndef LIBW32_SYS_STATFS_H_INCLUDED
 #define LIBW32_SYS_STATFS_H_INCLUDED
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_libw32_sys_statfs_h,"$Id: statfs.h,v 1.5 2018/09/29 02:22:56 cvsuser Exp $")
+
 __CPRAGMA_ONCE
 
 /* -*- mode: c; indent-width: 4; -*- */
@@ -38,7 +38,7 @@ __CPRAGMA_ONCE
 #define MNAMELEN    90                          /* length of buffer for returned name */
 
 typedef struct fsid {                           /* file system id type */
-    unsigned long   val[2]; 
+    unsigned long   val[2];
 } fsid_t;
 
 struct statfs {
