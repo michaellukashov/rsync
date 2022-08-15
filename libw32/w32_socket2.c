@@ -214,6 +214,7 @@ w32_accept_native(int fd, struct sockaddr *addr, int *addrlen)
              *  by child processes by default, so disable.
              */
             SetHandleInformation((HANDLE)s, HANDLE_FLAG_INHERIT, 0);
+            ret = (int)s;
         }
     }
     return ret;
