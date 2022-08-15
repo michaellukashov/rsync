@@ -139,6 +139,7 @@ __CPRAGMA_ONCE
 //typedef _stat64 stat64;
 #define stat64 _stat64
 #define fstat64 _fstat64
+//#define socketpair _socketpair
 #define pipe _pipe
 
 #if defined(HAVE_CONFIG_H)                      /* stand alone? */
