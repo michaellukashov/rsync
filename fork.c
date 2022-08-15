@@ -94,7 +94,7 @@ pid_t fork(void)
 		
 		assert(hp = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pi));
 		assert(ht = OpenThread(THREAD_ALL_ACCESS, FALSE, ti));
-		
+
 		ResumeThread(ht);
 		CloseHandle(ht);
 		CloseHandle(hp);
