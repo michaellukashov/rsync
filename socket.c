@@ -845,7 +845,7 @@ static int sock_exec(const char *prog)
 	}
 
 	if (pid == 0) {
-		close(fd[0]);
+		w32_close(fd[0]);
 		if (dup2(fd[1], STDIN_FILENO) < 0
 		 || dup2(fd[1], STDOUT_FILENO) < 0) {
 			fprintf(stderr, "Failed to run \"%s\"\n", prog);
@@ -854,6 +854,6 @@ static int sock_exec(const char *prog)
 		exit(shell_exec(prog));
 	}
 
-	close(fd[1]);
+	w32_close(fd[1]);
 	return fd[0];
 }
