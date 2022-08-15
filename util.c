@@ -26,6 +26,7 @@
 #include "inums.h"
 #include <stdlib.h>
 #include <sys/socket.h>
+#include <conio.h>
 
 extern int dry_run;
 extern int module_id;
