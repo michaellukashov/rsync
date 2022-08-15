@@ -27,6 +27,7 @@
  * connection, but it's switched on quite early using
  * io_start_multiplex_out() and io_start_multiplex_in(). */
 
+#include <unistd.h>
 #include "rsync.h"
 #include "ifuncs.h"
 #include "inums.h"
@@ -264,7 +265,7 @@ static size_t safe_read(int fd, char *buf, size_t len)
 			rprintf(FINFO, "select exception on fd %d\n", fd); */
 
 		if (FD_ISSET(fd, &r_fds)) {
-			int n = read(fd, buf + got, len - got);
+			int n = w32_read(fd, buf + got, len - got);
 			if (DEBUG_GTE(IO, 2))
 				rprintf(FINFO, "[%s] safe_read(%d)=%ld\n", who_am_i(), fd, (long)n);
 			if (n == 0)
@@ -308,7 +309,7 @@ static void safe_write(int fd, const char *buf, size_t len)
 
 	assert(fd != iobuf.out_fd);
 
-	n = write(fd, buf, len);
+	n = w32_write(fd, buf, len);
 	if ((size_t)n == len)
 		return;
 	if (n < 0) {
@@ -346,7 +347,7 @@ static void safe_write(int fd, const char *buf, size_t len)
 		}
 
 		if (FD_ISSET(fd, &w_fds)) {
-			n = write(fd, buf, len);
+			n = w32_write(fd, buf, len);
 			if (n < 0) {
 				if (errno == EINTR)
 					continue;
@@ -364,7 +365,7 @@ static void forward_filesfrom_data(void)
 {
 	int len;
 
-	len = read(ff_forward_fd, ff_xb.buf + ff_xb.len, ff_xb.size - ff_xb.len);
+	len = w32_read(ff_forward_fd, ff_xb.buf + ff_xb.len, ff_xb.size - ff_xb.len);
 	if (len <= 0) {
 		if (len == 0 || errno != EINTR) {
 			/* Send end-of-file marker */
@@ -763,7 +764,7 @@ static char *perform_io(size_t needed, int flags)
 				len = iobuf.in.size - iobuf.in.len;
 			} else
 				len = iobuf.in.size - pos;
-			if ((n = read(iobuf.in_fd, iobuf.in.buf + pos, len)) <= 0) {
+			if ((n = w32_read(iobuf.in_fd, iobuf.in.buf + pos, len)) <= 0) {
 				if (n == 0) {
 					/* Signal that input has become invalid. */
 					if (!read_batch || batch_fd < 0 || am_generator)
@@ -810,7 +811,7 @@ static char *perform_io(size_t needed, int flags)
 
 			if (out->pos + len > out->size)
 				len = out->size - out->pos;
-			if ((n = write(iobuf.out_fd, out->buf + out->pos, len)) <= 0) {
+			if ((n = w32_write(iobuf.out_fd, out->buf + out->pos, len)) <= 0) {
 				if (errno == EINTR || errno == EWOULDBLOCK || errno == EAGAIN)
 					n = 0;
 				else {
