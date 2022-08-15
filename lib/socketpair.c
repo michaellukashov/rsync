@@ -26,6 +26,7 @@
  */
 
 #include "rsync.h"
+#include <sys/socket.h>
 
 #ifdef _WIN32
 
@@ -60,7 +61,7 @@ socketpair(int domain, int type, int protocol, int socks[2])
 		return SOCKET_ERROR;
 	}
 
-	listener = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	listener = w32_socket_native(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 	if (listener == INVALID_SOCKET)
 		return SOCKET_ERROR;
@@ -74,16 +75,16 @@ socketpair(int domain, int type, int protocol, int socks[2])
 
 	do
 	{
-		if (setsockopt(listener, SOL_SOCKET, SO_REUSEADDR,
+		if (w32_setsockopt_native(listener, SOL_SOCKET, SO_REUSEADDR,
 			       (char *) &reuse, (socklen_t) sizeof(reuse)) == -1)
 			break;
 
-		if (bind(listener, &a.addr, sizeof(a.inaddr)) == SOCKET_ERROR)
+		if (w32_bind_native(listener, &a.addr, sizeof(a.inaddr)) == SOCKET_ERROR)
 			break;
 
 		memset(&a, 0, sizeof(a));
 
-		if (getsockname(listener, &a.addr, &addrlen) == SOCKET_ERROR)
+		if (w32_getsockname_native(listener, &a.addr, &addrlen) == SOCKET_ERROR)
 			break;
 
 		// win32 getsockname may only set the port number, p=0.0005.
@@ -91,7 +92,7 @@ socketpair(int domain, int type, int protocol, int socks[2])
 		a.inaddr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 		a.inaddr.sin_family = AF_INET;
 
-		if (listen(listener, 1) == SOCKET_ERROR)
+		if (w32_listen_native(listener, 1) == SOCKET_ERROR)
 			break;
 
 		socks[0] = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, flags);
@@ -99,10 +100,10 @@ socketpair(int domain, int type, int protocol, int socks[2])
 		if (socks[0] == (int) INVALID_SOCKET)
 			break;
 
-		if (connect(socks[0], &a.addr, sizeof(a.inaddr)) == SOCKET_ERROR)
+		if (w32_connect_native(socks[0], &a.addr, sizeof(a.inaddr)) == SOCKET_ERROR)
 			break;
 
-		socks[1] = accept(listener, NULL, NULL);
+		socks[1] = w32_accept_native(listener, NULL, NULL);
 
 		if (socks[1] == (int) INVALID_SOCKET)
 			break;

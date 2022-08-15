@@ -22,6 +22,7 @@
  */
 
 #include "rsync.h"
+#include <sys/socket.h>
 
 #ifdef _WIN32
 int
