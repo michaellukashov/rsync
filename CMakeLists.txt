@@ -256,7 +256,7 @@ add_library(libw32-lib STATIC
   libw32/w32_errno.c
   libw32/w32_dirent.c
   libw32/w32_dir.c
-#  libw32/w32_close.c
+  libw32/w32_close.c
   libw32/w32_chown.c
   libw32/w32_child.c
 #  libw32/w32_check.c
