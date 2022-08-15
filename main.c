@@ -1276,7 +1276,7 @@ int client_run(int f_in, int f_out, pid_t pid, int argc, char *argv[])
 	}
 
 	io_set_sock_fds(f_in, f_out);
-	setup_protocol(f_out,f_in);
+	setup_protocol(f_out, f_in);
 
 	/* We set our stderr file handle to blocking because ssh might have
 	 * set it to non-blocking.  This can be particularly troublesome if
