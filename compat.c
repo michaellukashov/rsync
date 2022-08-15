@@ -547,7 +547,7 @@ static void negotiate_the_strings(int f_in, int f_out)
 		valid_checksums.negotiated_name = valid_compressions.negotiated_name = NULL;
 }
 
-void setup_protocol(int f_out,int f_in)
+void setup_protocol(int f_out, int f_in)
 {
 	assert(file_extra_cnt == 0);
 	assert(EXTRA64_CNT == 2 || EXTRA64_CNT == 1);
