@@ -1,5 +1,4 @@
 #include <edidentifier.h>
-__CIDENT_RCSID(gr_w32_sockpair_c,"$Id: w32_sockpair.c,v 1.4 2018/10/12 00:52:04 cvsuser Exp $")
 
 /*
  * win32 socket file-descriptor support
